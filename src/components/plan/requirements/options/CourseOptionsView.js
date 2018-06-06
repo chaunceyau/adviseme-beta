@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import {
   toTitleCase,
   replaceUnderscoreWithSpace
-} from "../../../util/Utilities";
+} from "../../../../util/Utilities";
 
 /**
  * View containing all of the course options for an individual requirement

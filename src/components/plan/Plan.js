@@ -12,7 +12,7 @@ import DegreeRequirementsView from "./requirements/DegreeRequirementsView";
 class Plan extends Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <PlanProgressView />
         <Switch>
           <Route path="/plan" component={PlanWelcome} exact />
@@ -27,7 +27,7 @@ class Plan extends Component {
             component={CourseOptionsView}
           />
         </Switch>
-      </div>
+      </React.Fragment>
     );
   }
 }

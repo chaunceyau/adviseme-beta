@@ -6,4 +6,13 @@ const containerStyle = {
   margin: "0 auto"
 };
 
-export { containerStyle };
+const urls = {
+  plan: {
+    default: "/plan/",
+    planner: "/plan/planner/",
+    requirements: "/plan/requirements/",
+    options: "/plan/requirements/:requirementName"
+  }
+};
+
+export { containerStyle, urls };

@@ -33,7 +33,7 @@ class Header extends Component {
             textAlign: "center"
           }}
         >
-          <h2>AdviseMe</h2>
+          <h2>AdviseMe-</h2>
         </Menu.Item>
         <Menu.Item
           name="plan"

@@ -19,7 +19,7 @@ const academicUnits = [
         credits: 2
       }
     ]
-  },
+  }
   // {
   //   name: "Spring 2018",
   //   courses: [
@@ -81,10 +81,10 @@ const sidebarCourses = [
   { name: "bio 190", credits: 5 }
 ];
 
-const requirementCategories = [
+const degreeRequirements = [
   {
     name: "K-State 8 Requirements",
-    subrequirements: [
+    requirements: [
       {
         name: "Aesthetic Interpretation",
         completed: false,
@@ -319,21 +319,70 @@ const requirementCategories = [
 
       { name: "Natural and Physical Sciences", completed: true, options: [] },
 
-      { name: "Social Sciences", completed: true, options: [] }
+      {
+        name: "Social Sciences",
+        completed: false,
+        requirements: [
+          {
+            name: "history14",
+            completed: false,
+            options: []
+          },
+          {
+            name: "fantasy143",
+            completed: false,
+            options: []
+          }
+        ]
+      },
+      {
+        name: "Social Sciences V2 FOR Testing",
+        completed: false,
+        requirements: [
+          {
+            name: "history",
+            completed: false,
+            options: []
+          },
+          {
+            name: "fantasy",
+            completed: false,
+            options: []
+          }
+        ]
+      }
     ]
   },
   {
     name: "College of Business Administration Requirements",
-    subrequirements: [{ name: "BAPP", options: [] }]
+    requirements: [
+      { name: "BAPP", options: [] },
+      {
+        name: "Social Sciences 4390 FOR Testing",
+        completed: false,
+        requirements: [
+          {
+            name: "histodsnakry",
+            completed: false,
+            options: []
+          },
+          {
+            name: "fandskltasy",
+            completed: false,
+            options: []
+          }
+        ]
+      }
+    ]
   },
   {
     name: "Finance Major Requirements",
-    subrequirements: [{ name: "BAPP", options: [] }]
+    requirements: [{ name: "BAPP", options: [] }]
   },
   {
     name: "Financial Analyst Track Requirements",
-    subrequirements: [{ name: "BAPP", options: [] }]
+    requirements: [{ name: "BAPP", options: [] }]
   }
 ];
 
-export { academicUnits, sidebarCourses, requirementCategories };
+export { academicUnits, sidebarCourses, degreeRequirements };

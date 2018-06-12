@@ -5,7 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import PlanWelcome from "./PlanWelcome";
 import PlanProgressView from "./PlanProgressView";
 
-import CourseOptionsView from "./options/CourseOptionsView";
+import CourseOptionsView from './requirements/options/CourseOptionsView'
 import CoursePlannerView from "./planner/CoursePlannerView";
 import DegreeRequirementsView from "./requirements/DegreeRequirementsView";
 

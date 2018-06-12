@@ -5,11 +5,15 @@ import {
   replaceUnderscoreWithSpace
 } from "../../../../util/Utilities";
 
+import { degreeRequirements } from "../../../../api/api";
+
 /**
  * View containing all of the course options for an individual requirement
  */
 
 class CourseOptionsView extends Component {
+
+  
   render() {
     // requirement name corresponding to the current page (i.e. '/plan/requirements/:requirementName)
     const requirementName = toTitleCase(

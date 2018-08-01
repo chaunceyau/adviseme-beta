@@ -324,9 +324,45 @@ const degreeRequirements = [
         completed: false,
         requirements: [
           {
-            name: "history14",
+            name: "History14",
             completed: false,
-            options: []
+            options: [
+              {
+                category: "Biology",
+                courses: [
+                  {
+                    name: "BIO 100",
+                    description: "this is the class description"
+                  },
+                  {
+                    name: "BIO 105",
+                    description: "this is the class description"
+                  },
+                  {
+                    name: "BIO 110",
+                    description: "this is the class description"
+                  }
+                ]
+              },
+
+              {
+                category: "Melanie's Beauty",
+                courses: [
+                  {
+                    name: "MB 100",
+                    description: "analyzing how melanie is the hottest girl in america"
+                  },
+                  {
+                    name: "MB 105",
+                    description: "this is the class description"
+                  },
+                  {
+                    name: "MB 110",
+                    description: "this is the class description"
+                  }
+                ]
+              }
+            ]
           },
           {
             name: "fantasy143",

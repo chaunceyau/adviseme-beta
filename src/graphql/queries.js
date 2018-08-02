@@ -25,20 +25,39 @@ export const GET_STUDENT_DEGREE_REQUIREMENTS = gql`
       degreePrograms {
         id
         programName
+        # LEVEL 0: CATEGORIES 
         # top level degree requirements (e.g. KSU 8)
         degreeProgramRequirements {
-          # id
+          id
           degreeRequirementGroupName
           logicalOperator
           # LEVEL 1: CATEGORIES
           degreeProgramRequirementOptions {
-            # id
+            id
             degreeRequirementGroupName
             logicalOperator
+            # LEVEL 2: CATEGORIES
             degreeProgramRequirementOptions {
-              # id
+              id
               degreeRequirementGroupName
               logicalOperator
+              # LEVEL 3: CATEGORIES
+              degreeProgramRequirementOptions {
+                id
+                degreeRequirementGroupName
+                logicalOperator
+                # LEVEL 4: CATEGORIES
+                degreeProgramRequirementOptions {
+                  id
+                  degreeRequirementGroupName
+                  logicalOperator
+                }
+                # LEVEL 4: COURSE OPTIONS
+                courseOptions { 
+                  id
+                  name
+                }
+              }
             }
           }
         }

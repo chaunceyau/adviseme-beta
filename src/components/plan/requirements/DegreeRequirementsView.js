@@ -1,40 +1,31 @@
 import React, { Component } from 'react'
 
 //
-import { degreeRequirements } from '../../../api/api'
-import { Segment } from 'semantic-ui-react'
-import TopLevelDegreeRequirements from './TopLevelDegreeRequirements'
 import { GET_STUDENT_DEGREE_REQUIREMENTS } from '../../../graphql/queries'
 import { Query } from 'react-apollo'
+import { Accordion, Icon } from 'semantic-ui-react'
+import DegreeRequirementGroupAccordion from './DegreeRequirementGroupAccordion'
+import DegreeRequirementGroupSegment from './DegreeRequirementGroupSegment'
+import DegreeRequirementGroup from './DegreeRequirementGroup'
 
 class DegreeRequirementsView extends Component {
   /**
    *
+   * @param {*} degreePrograms
    */
-  renderTopLevelDegreeRequirementCategories(degreePrograms) {
-    console.log(degreePrograms)
-    var topLevelRequirements = []
-    degreePrograms.map(degree => {
-      console.log(degree)
+  renderDegreeProgramBlocks(degreePrograms) {
+    // map through each degree program a student is in
+    return degreePrograms.map(degree => {
+      let topLevelRequirements = []
 
-      topLevelRequirements.push(degree.degreeProgramRequirements)
+      // create the accordion then loop through requirements
+      degree.degreeProgramRequirements.map(requirement => {
+        topLevelRequirements.push(requirement)
+      })
+      console.log(degree.id, topLevelRequirements)
+      return <DegreeRequirementGroup key={degree.id} requirements={topLevelRequirements} />
     })
-
-    return <TopLevelDegreeRequirements requirements={topLevelRequirements} />
   }
-  /**
-   *
-   */
-  old_renderTopLevelDegreeRequirementCategories() {
-    var topLevelRequirements = []
-
-    degreeRequirements.map(req => {
-      topLevelRequirements.push(req)
-    })
-
-    return <TopLevelDegreeRequirements requirements={topLevelRequirements} />
-  }
-
   /**
    *
    */
@@ -47,7 +38,7 @@ class DegreeRequirementsView extends Component {
             return (
               <React.Fragment>
                 <h4>Select courses to fulfill the following requirements:</h4>
-                {this.renderTopLevelDegreeRequirementCategories(data.User.degreePrograms)}
+                {this.renderDegreeProgramBlocks(data.User.degreePrograms)}
               </React.Fragment>
             )
         }}

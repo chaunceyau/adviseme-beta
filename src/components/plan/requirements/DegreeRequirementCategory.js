@@ -23,19 +23,20 @@ class DegreeRequirementCategoryGroup extends Component {
     return (
       <Accordion fluid styled>
         {this.props.requirements.map(requirement => {
+          console.log(requirement)
           index++
           subrequirements = []
           return [
             <Accordion.Title active={activeIndex === index} index={index} onClick={this.handleClick}>
               <Icon name="dropdown" />
-              {requirement.name}
+              {requirement.degreeRequirementGroupName}
             </Accordion.Title>,
             <Accordion.Content active={activeIndex === index}>
               {/**
                * Map subrequirements to an array so they can be added to a group (accordion)
                * */
 
-              requirement.requirements.map(req => {
+              requirement.degreeProgramRequirementOptions.map(req => {
                 subrequirements.push(req)
               })}
               <DegreeRequirementGroup requirements={subrequirements} />
@@ -47,10 +48,10 @@ class DegreeRequirementCategoryGroup extends Component {
   }
 }
 
-class DegreeRequirementCategory extends Component {
-  render() {
-    return <Accordion.Title>category</Accordion.Title>
-  }
-}
+// class DegreeRequirementCategory extends Component {
+//   render() {
+//     return <Accordion.Title>category</Accordion.Title>
+//   }
+// }
 
 export default DegreeRequirementCategoryGroup

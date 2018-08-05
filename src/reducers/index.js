@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux'
 
-import planner from './plannerReducer'
 import user from './userReducer'
 
 export default combineReducers({
-  planner,
   user
 })
 

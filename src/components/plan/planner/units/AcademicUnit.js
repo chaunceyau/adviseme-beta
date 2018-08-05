@@ -7,13 +7,15 @@ import PlannerCourse from '../sidebar/PlannerCourse'
  */
 class AcademicUnit extends Component {
   render() {
+    const { name, courses } = this.props
+    const cleanedName = name.replace(/[_-]/g, ' ')
     return (
-      <Card style={{ maxHeight: '43.5vh' }}>
+      <Card>
         <Card.Content>
-          <Card.Header>{this.props.name}</Card.Header>
+          <Card.Header>{cleanedName}</Card.Header>
         </Card.Content>
         <Card.Content style={{ overflow: 'auto' }}>
-          {this.props.courses.map(course => <PlannerCourse key={course.id} name={course.name} />)}
+          {courses.map(course => <PlannerCourse key={course.id} name={course.name} />)}
         </Card.Content>
       </Card>
     )

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Accordion, Icon, Segment } from '../../../../node_modules/semantic-ui-react'
+import { Accordion, Icon, Segment, Grid } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 export default class DegreeRequirementGroup extends Component {
   state = { activeIndex: null }
@@ -13,15 +14,15 @@ export default class DegreeRequirementGroup extends Component {
   }
 
   render() {
-    if (!(Array.isArray(this.props.requirements) && this.props.requirements.length)) return <span>error</span>
+    if (!(Array.isArray(this.props.requirements) && this.props.requirements.length)) return <span>Degree requirement group error</span>
     // make an array to map requirements with only categorical options from props
     let accordionRequirements = []
     // make an array to map requirements with only course options from props
     let segmentRequirements = []
 
     // map the requirements
-    this.props.requirements.map(requirement => {
-      const { degreeProgramRequirementOptions, courseOptions } = requirement
+    this.props.requirements.forEach(requirement => {
+      const { degreeProgramRequirementOptions } = requirement
       //   TODO: MAKE THIS CHECK IF COURSE OPTIONS IS AVAILABLE, IF NOT... RENDER ERROR. below statement should do
       //   } else if (Array.isArray(courseOptions) && courseOptions.length) {
       if (Array.isArray(degreeProgramRequirementOptions) && degreeProgramRequirementOptions.length)
@@ -35,12 +36,20 @@ export default class DegreeRequirementGroup extends Component {
         // the key for this accordion should likely be replaced. Will probably work for now, but not best practice?
         <Accordion key={accordionRequirements[0].id} styled fluid>
           {accordionRequirements.map(requirement => {
+            let complete = false
             const { id, degreeRequirementGroupName } = requirement
             const { activeIndex } = this.state
             return [
               <Accordion.Title key={id} active={activeIndex === id} index={id} onClick={this.handleClick}>
-                <Icon name="dropdown" />
-                {degreeRequirementGroupName}
+                <Grid columns={2}>
+                  <Grid.Column>
+                    <Icon name="dropdown" />
+                    {degreeRequirementGroupName}
+                  </Grid.Column>
+                  <Grid.Column textAlign="right">
+                    {complete ? <Icon name="check circle" color="green" /> : <Icon name="times circle" color="red" />}
+                  </Grid.Column>
+                </Grid>
               </Accordion.Title>,
               <Accordion.Content key={id + 'content'} active={activeIndex === id}>
                 <DegreeRequirementGroup key={id} requirements={requirement.degreeProgramRequirementOptions} />
@@ -58,8 +67,23 @@ export default class DegreeRequirementGroup extends Component {
       return (
         <Segment.Group>
           {segmentRequirements.map(requirement => {
-            const { degreeRequirementGroupName } = requirement
-            return <Segment key={requirement.id}>{degreeRequirementGroupName}</Segment>
+            const { id, degreeRequirementGroupName } = requirement
+
+            let complete = false
+            return (
+              <Segment key={requirement.id}>
+                <Grid columns={2}>
+                  <Grid.Column>
+                    <Link to={{ pathname: '/plan/requirements/options', state: { requirementGroupID: id } }}>
+                      {degreeRequirementGroupName}
+                    </Link>
+                  </Grid.Column>
+                  <Grid.Column textAlign="right">
+                    {complete ? <Icon name="check circle" color="green" /> : <Icon name="times circle" color="red" />}
+                  </Grid.Column>
+                </Grid>
+              </Segment>
+            )
           })}
         </Segment.Group>
       )

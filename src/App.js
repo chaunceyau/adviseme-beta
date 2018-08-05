@@ -10,11 +10,14 @@ import Routes from './Routes'
 import { containerStyle } from './util/Constants'
 import BreadcrumbView from './components/layout/BreadcrumbView'
 import store from './store'
+import { setCurrentStudent } from './actions'
 
-const client = new ApolloClient({ uri: 'https://api.graph.cool/simple/v1/cjjpxah2l102u0189cbdxckg4' })
+// TODO: ADD QUERY BATCHING
+export const client = new ApolloClient({ uri: 'https://api.graph.cool/simple/v1/cjjpxah2l102u0189cbdxckg4' })
 
 export default class App extends Component {
   render() {
+    store.dispatch(setCurrentStudent('cjkab5xca7am40172xazvahh8'))
     return (
       <ApolloProvider client={client}>
         <Provider store={store}>

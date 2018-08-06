@@ -40,7 +40,6 @@ class AcademicUnitsView extends Component {
                     .query({ query: TEST_ME_CLIENT_PICKED_UNITS })
                     .then(({ data: { User } }) => console.log(User))
                     .catch(err => console.log(err))
-                  console.log('clicked')
                 }}
                 style={{ height: '100%', backgroundColor: 'gainsboro', alignItems: 'center', justifyContent: 'center' }}
               >

@@ -5,6 +5,7 @@ export const STUDENT_ID = 'cjkab5xca7am40172xazvahh8'
 export const GET_STUDENT_PLAN_INFORMATION = gql`
   query {
     User(id: "${STUDENT_ID}") {
+      id
       unplannedCourses {
         id
         name
@@ -27,31 +28,46 @@ export const GET_STUDENT_PLAN_INFORMATION = gql`
           id
           degreeRequirementGroupName
           logicalOperator
+          # LEVEL 1: COURSE OPTIONS
+          courseOptions { 
+            id
+            name
+          }
           # LEVEL 1: CATEGORIES
           degreeProgramRequirementOptions {
             id
             degreeRequirementGroupName
             logicalOperator
+            # LEVEL 2: COURSE OPTIONS
+            courseOptions { 
+              id
+              name
+            }
             # LEVEL 2: CATEGORIES
             degreeProgramRequirementOptions {
               id
               degreeRequirementGroupName
               logicalOperator
+              # LEVEL 3: COURSE OPTIONS
+              courseOptions { 
+                id
+                name
+              }
               # LEVEL 3: CATEGORIES
               degreeProgramRequirementOptions {
                 id
                 degreeRequirementGroupName
                 logicalOperator
+                # LEVEL 4: COURSE OPTIONS
+                courseOptions { 
+                  id
+                  name
+                }
                 # LEVEL 4: CATEGORIES
                 degreeProgramRequirementOptions {
                   id
                   degreeRequirementGroupName
                   logicalOperator
-                }
-                # LEVEL 4: COURSE OPTIONS
-                courseOptions { 
-                  id
-                  name
                 }
               }
             }
@@ -100,11 +116,13 @@ export const TEST_ME_CLIENT_PICKED_UNITS = gql`
 export const ADD_COURSE_TO_USER_PLAN = gql`
   mutation AddToUserOnCourse($courseID: ID!, $userID: ID!) {
     addToUserOnCourse(unplannedCoursesCourseId: $courseID, usersUserId: $userID) {
-      unplannedCoursesCourse {
-        id
-      }
       usersUser {
         id
+        name
+        unplannedCourses {
+          id
+          name
+        }
       }
     }
   }
@@ -135,31 +153,46 @@ export const GET_STUDENT_DEGREE_REQUIREMENTS = gql`
           id
           degreeRequirementGroupName
           logicalOperator
+          # LEVEL 1: COURSE OPTIONS
+          courseOptions { 
+            id
+            name
+          }
           # LEVEL 1: CATEGORIES
           degreeProgramRequirementOptions {
             id
             degreeRequirementGroupName
             logicalOperator
+            # LEVEL 2: COURSE OPTIONS
+            courseOptions { 
+              id
+              name
+            }
             # LEVEL 2: CATEGORIES
             degreeProgramRequirementOptions {
               id
               degreeRequirementGroupName
               logicalOperator
+              # LEVEL 3: COURSE OPTIONS
+              courseOptions { 
+                id
+                name
+              }
               # LEVEL 3: CATEGORIES
               degreeProgramRequirementOptions {
                 id
                 degreeRequirementGroupName
                 logicalOperator
+                # LEVEL 4: COURSE OPTIONS
+                courseOptions { 
+                  id
+                  name
+                }
                 # LEVEL 4: CATEGORIES
                 degreeProgramRequirementOptions {
                   id
                   degreeRequirementGroupName
                   logicalOperator
-                }
-                # LEVEL 4: COURSE OPTIONS
-                courseOptions { 
-                  id
-                  name
                 }
               }
             }

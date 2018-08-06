@@ -47,7 +47,6 @@ class DegreeRequirements extends Component {
    *
    */
   render() {
-    // console.log(client)
     return (
       <Query query={GET_STUDENT_DEGREE_REQUIREMENTS}>
         {({ loading, error, data }) => {

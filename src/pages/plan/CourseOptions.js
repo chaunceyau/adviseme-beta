@@ -94,7 +94,7 @@ class CourseOption extends Component {
                     <Button onClick={this.handleClose}>Close</Button>
                     <Mutation
                       mutation={ADD_COURSE_TO_USER_PLAN}
-                      refetchQueries={[{ query: GET_STUDENT_UNPLANNED_COURSES }]}
+                      // refetchQueries={[{ query: GET_STUDENT_UNPLANNED_COURSES }]}
                       variables={{ courseID: id, userID: STUDENT_ID }}
                     >
                       {(addCourseToPlan, { loading, data }) => {

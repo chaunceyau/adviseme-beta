@@ -3,6 +3,7 @@ import { Accordion, Icon, Segment, Grid } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 export default class DegreeRequirementGroup extends Component {
+  // TODO: NOTE: THE CHANGE IN DEGREE REQS QUERY MAY LEAD TO LONG RENDERS FOR LONG LISTS OF COURSES
   state = { activeIndex: null }
 
   handleClick = (e, titleProps) => {
@@ -11,6 +12,14 @@ export default class DegreeRequirementGroup extends Component {
     const newIndex = activeIndex === index ? null : index
 
     this.setState({ activeIndex: newIndex })
+  }
+
+  isRequirementComplete(requirement) {
+    // console.log('KK ', this.props.plannerCourseIDs, ' RR ', requirement.courseOptions)
+    // let optionIDS = []
+    // requirement.courseOptions.forEach(req => optionIDS.push(req.id))
+    // return this.props.plannerCourseIDs.some(v => optionIDS.includes(v))
+    return false
   }
 
   render() {
@@ -36,7 +45,6 @@ export default class DegreeRequirementGroup extends Component {
         // the key for this accordion should likely be replaced. Will probably work for now, but not best practice?
         <Accordion key={accordionRequirements[0].id} styled fluid>
           {accordionRequirements.map(requirement => {
-            let complete = false
             const { id, degreeRequirementGroupName } = requirement
             const { activeIndex } = this.state
             return [
@@ -47,19 +55,31 @@ export default class DegreeRequirementGroup extends Component {
                     {degreeRequirementGroupName}
                   </Grid.Column>
                   <Grid.Column textAlign="right">
-                    {complete ? <Icon name="check circle" color="green" /> : <Icon name="times circle" color="red" />}
+                    {this.isRequirementComplete(requirement) ? (
+                      <Icon name="check circle" color="green" />
+                    ) : (
+                      <Icon name="times circle" color="red" />
+                    )}
                   </Grid.Column>
                 </Grid>
               </Accordion.Title>,
               <Accordion.Content key={id + 'content'} active={activeIndex === id}>
-                <DegreeRequirementGroup key={id} requirements={requirement.degreeProgramRequirementOptions} />
+                <DegreeRequirementGroup
+                  key={id}
+                  requirements={requirement.degreeProgramRequirementOptions}
+                  plannerCourseIDs={this.props.plannerCourseIDs}
+                />
               </Accordion.Content>
             ]
           })}
         </Accordion>,
         Array.isArray(segmentRequirements) && segmentRequirements.length ? (
           // the key for this accordion should likely be replaced. Will probably work for now, but not best practice?
-          <DegreeRequirementGroup key={segmentRequirements[0].id} requirements={segmentRequirements} />
+          <DegreeRequirementGroup
+            key={segmentRequirements[0].id}
+            requirements={segmentRequirements}
+            plannerCourseIDs={this.props.plannerCourseIDs}
+          />
         ) : null
       ]
 
@@ -68,8 +88,6 @@ export default class DegreeRequirementGroup extends Component {
         <Segment.Group>
           {segmentRequirements.map(requirement => {
             const { id, degreeRequirementGroupName } = requirement
-
-            let complete = false
             return (
               <Segment key={requirement.id}>
                 <Grid columns={2}>
@@ -79,7 +97,11 @@ export default class DegreeRequirementGroup extends Component {
                     </Link>
                   </Grid.Column>
                   <Grid.Column textAlign="right">
-                    {complete ? <Icon name="check circle" color="green" /> : <Icon name="times circle" color="red" />}
+                    {this.isRequirementComplete(requirement) ? (
+                      <Icon name="check circle" color="green" />
+                    ) : (
+                      <Icon name="times circle" color="red" />
+                    )}
                   </Grid.Column>
                 </Grid>
               </Segment>

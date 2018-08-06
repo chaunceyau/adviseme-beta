@@ -3,14 +3,15 @@ import { ActionTypes } from '../actions'
 export default function reducer(
   state = {
     id: -1,
-    name: '',
-    currentStudent: {}
+    currentStudent: {
+      id: '',
+      degreeTypes: [{ id: '' }]
+    },
+    plannerCourses: []
   },
   action
 ) {
   switch (action.type) {
-    case 'GET_STUDENT_COURSES':
-      return { ...state }
     case ActionTypes.SET_CURRENT_STUDENT:
       return {
         ...state,

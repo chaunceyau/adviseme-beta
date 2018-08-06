@@ -3,12 +3,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Segment, Header, Button, Modal, Popup } from 'semantic-ui-react'
 import { Query, Mutation } from 'react-apollo'
-import {
-  GET_COURSE_OPTIONS_FOR_REQUIREMENT,
-  STUDENT_ID,
-  ADD_COURSE_TO_USER_PLAN,
-  GET_STUDENT_UNPLANNED_COURSES
-} from '../../graphql/queries'
+import { GET_COURSE_OPTIONS_FOR_REQUIREMENT, STUDENT_ID, ADD_COURSE_TO_USER_PLAN } from '../../graphql/queries'
 import ContentLoading from '../ContentLoading'
 import { Redirect } from 'react-router-dom'
 

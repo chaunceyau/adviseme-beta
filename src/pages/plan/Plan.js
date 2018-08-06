@@ -10,7 +10,7 @@ import PlanStageBar from '../../components/plan/PlanStageBar'
 
 import { REQUIREMENTS_PAGE, COURSE_PLANNING_PAGE, COURSE_OPTIONS_PAGE, PLAN_HOMEPAGE } from '../../constants/constants'
 import { Query } from '../../../node_modules/react-apollo'
-import { GET_STUDENT_PLAN_ACADEMIC_UNITS, GET_STUDENT_UNPLANNED_COURSES, GET_STUDENT_PLAN_INFORMATION } from '../../graphql/queries'
+import { GET_STUDENT_PLAN_INFORMATION } from '../../graphql/queries'
 
 class Plan extends Component {
   render() {

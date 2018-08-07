@@ -45,14 +45,14 @@ export default class DegreeRequirementGroup extends Component {
         // the key for this accordion should likely be replaced. Will probably work for now, but not best practice?
         <Accordion key={accordionRequirements[0].id} styled fluid>
           {accordionRequirements.map(requirement => {
-            const { id, degreeRequirementGroupName } = requirement
+            const { id, name } = requirement
             const { activeIndex } = this.state
             return [
               <Accordion.Title key={id} active={activeIndex === id} index={id} onClick={this.handleClick}>
                 <Grid columns={2}>
                   <Grid.Column>
                     <Icon name="dropdown" />
-                    {degreeRequirementGroupName}
+                    {name}
                   </Grid.Column>
                   <Grid.Column textAlign="right">
                     {this.isRequirementComplete(requirement) ? (
@@ -87,13 +87,13 @@ export default class DegreeRequirementGroup extends Component {
       return (
         <Segment.Group>
           {segmentRequirements.map(requirement => {
-            const { id, degreeRequirementGroupName } = requirement
+            const { id, name } = requirement
             return (
               <Segment key={requirement.id}>
                 <Grid columns={2}>
                   <Grid.Column>
                     <Link to={{ pathname: '/plan/requirements/options', state: { requirementGroupID: id } }}>
-                      {degreeRequirementGroupName}
+                      {name}
                     </Link>
                   </Grid.Column>
                   <Grid.Column textAlign="right">

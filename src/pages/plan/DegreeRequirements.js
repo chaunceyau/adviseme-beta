@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import { Header, Segment, Grid } from 'semantic-ui-react'
-import { Query } from 'react-apollo'
 
 //
-import { GET_STUDENT_DEGREE_REQUIREMENTS } from '../../graphql/queries'
 import DegreeRequirementGroup from '../../components/plan/requirements/DegreeRequirementGroup'
-import ErrorPage from '../ErrorPage'
 import ContentLoading from '../ContentLoading'
-import { client } from '../../App'
 
 //
 class DegreeRequirements extends Component {
@@ -47,24 +43,17 @@ class DegreeRequirements extends Component {
    *
    */
   render() {
-    return (
-      <Query query={GET_STUDENT_DEGREE_REQUIREMENTS}>
-        {({ loading, error, data }) => {
-          if (loading)
-            return (
-              <React.Fragment>
-                <Header attached="top">Degree Requirements</Header>
-                <Segment attached="bottom">
-                  <h4>Select courses to fulfill the following requirements:</h4>
-                  <ContentLoading />
-                </Segment>
-              </React.Fragment>
-            )
-          if (error) return <ErrorPage />
-          if (data) return this.renderDegreeProgramBlocks(data.User.degreePrograms)
-        }}
-      </Query>
-    )
+    if (this.props.loading)
+      return (
+        <React.Fragment>
+          <Header attached="top">Degree Requirements</Header>
+          <Segment attached="bottom">
+            <h4>Select courses to fulfill the following requirements:</h4>
+            <ContentLoading />
+          </Segment>
+        </React.Fragment>
+      )
+    return this.renderDegreeProgramBlocks(this.props.degreePrograms)
   }
 }
 export default DegreeRequirements

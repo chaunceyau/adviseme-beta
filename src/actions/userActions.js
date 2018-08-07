@@ -17,3 +17,17 @@ export function setCurrentStudent(id) {
     }
   }
 }
+
+
+export function setUnplannedCourses(courses) {
+  return {
+    type: ActionTypes.SET_UNPLANNED_COURSES,
+    payload: courses
+  }
+}
+export function setAcademicUnits(academicUnits) {
+  return {
+    type: ActionTypes.SET_ACADEMIC_UNITS,
+    payload: academicUnits
+  }
+}

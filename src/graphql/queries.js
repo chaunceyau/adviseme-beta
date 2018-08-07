@@ -1,10 +1,10 @@
 import gql from 'graphql-tag'
 
-export const STUDENT_ID = 'cjkab5xca7am40172xazvahh8'
+export const STUDENT_ID = 'cjkisobtc002l0949p6ts97bo'
 
 export const GET_STUDENT_PLAN_INFORMATION = gql`
   query {
-    User(id: "${STUDENT_ID}") {
+    user(where:{id: "${STUDENT_ID}"}) {
       id
       unplannedCourses {
         id
@@ -26,7 +26,7 @@ export const GET_STUDENT_PLAN_INFORMATION = gql`
         # top level degree requirements (e.g. KSU 8)
         degreeProgramRequirements {
           id
-          degreeRequirementGroupName
+          name
           logicalOperator
           # LEVEL 1: COURSE OPTIONS
           courseOptions { 
@@ -36,7 +36,7 @@ export const GET_STUDENT_PLAN_INFORMATION = gql`
           # LEVEL 1: CATEGORIES
           degreeProgramRequirementOptions {
             id
-            degreeRequirementGroupName
+            name
             logicalOperator
             # LEVEL 2: COURSE OPTIONS
             courseOptions { 
@@ -46,7 +46,7 @@ export const GET_STUDENT_PLAN_INFORMATION = gql`
             # LEVEL 2: CATEGORIES
             degreeProgramRequirementOptions {
               id
-              degreeRequirementGroupName
+              name
               logicalOperator
               # LEVEL 3: COURSE OPTIONS
               courseOptions { 
@@ -56,7 +56,7 @@ export const GET_STUDENT_PLAN_INFORMATION = gql`
               # LEVEL 3: CATEGORIES
               degreeProgramRequirementOptions {
                 id
-                degreeRequirementGroupName
+                name
                 logicalOperator
                 # LEVEL 4: COURSE OPTIONS
                 courseOptions { 
@@ -66,7 +66,7 @@ export const GET_STUDENT_PLAN_INFORMATION = gql`
                 # LEVEL 4: CATEGORIES
                 degreeProgramRequirementOptions {
                   id
-                  degreeRequirementGroupName
+                  name
                   logicalOperator
                 }
               }

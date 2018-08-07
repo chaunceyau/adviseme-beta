@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Grid, Card, Icon } from 'semantic-ui-react'
 import _ from 'lodash'
+import { connect } from 'react-redux'
 
 // component imports
 import AcademicUnit from './AcademicUnit'
-import { GET_STUDENT_PLAN_ACADEMIC_UNITS, TEST_ME_CLIENT_PICKED_UNITS } from '../../../../graphql/queries'
-import { Query } from 'react-apollo'
+import { TEST_ME_CLIENT_PICKED_UNITS } from '../../../../graphql/queries'
 import ContentLoading from '../../../../pages/ContentLoading'
 import { client } from '../../../../App'
 
@@ -17,6 +17,7 @@ class AcademicUnitsView extends Component {
   renderRowsOfUnits(academicUnits) {
     let rows = []
 
+    if (!Array.isArray(academicUnits)) return <Grid.Row>No academic units to display. Click to add one.</Grid.Row>
     // take the units and map into rows
     academicUnits.map(academicUnit => {
       return rows.push(
@@ -41,7 +42,13 @@ class AcademicUnitsView extends Component {
                     .then(({ data: { User } }) => console.log(User))
                     .catch(err => console.log(err))
                 }}
-                style={{ height: '100%', backgroundColor: 'gainsboro', alignItems: 'center', justifyContent: 'center' }}
+                style={{
+                  height: '100%',
+                  backgroundColor: 'gainsboro',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minHeight: 250
+                }}
               >
                 <Icon name="add circle" size="huge" style={{ color: 'white', marginBottom: '1rem' }} />
                 <span style={{ color: 'white', fontWeight: '600', fontSize: '1.35rem' }}>Add Semester</span>
@@ -68,19 +75,14 @@ class AcademicUnitsView extends Component {
     // TODO: MIGHT NOT NEED 65vh maxheight after remove testbar
     return (
       <Grid doubling columns={3} stackable>
-        <Query query={GET_STUDENT_PLAN_ACADEMIC_UNITS}>
-          {({ loading, error, data }) => {
-            if (loading) return this.renderUnitsLoading()
-            if (error) return <span>error</span>
-            if (data) {
-              const { studentAcademicUnits } = data.User
-              return this.renderRowsOfUnits(studentAcademicUnits)
-            }
-          }}
-        </Query>
+        {this.renderRowsOfUnits(this.props.academicUnits)}
       </Grid>
     )
   }
 }
 
-export default AcademicUnitsView
+const mapStateToProps = store => ({
+  academicUnits: store.user.academicUnits
+})
+
+export default connect(mapStateToProps)(AcademicUnitsView)

@@ -7,7 +7,8 @@ export default function reducer(
       id: '',
       degreeTypes: [{ id: '' }]
     },
-    plannerCourses: []
+    unplannedCourses: [],
+    academicUnits: []
   },
   action
 ) {
@@ -19,6 +20,19 @@ export default function reducer(
           id: action.payload.id
         }
       }
+
+    case ActionTypes.SET_UNPLANNED_COURSES:
+      return {
+        ...state,
+        unplannedCourses: action.payload
+      }
+
+    case ActionTypes.SET_ACADEMIC_UNITS:
+      return {
+        ...state,
+        academicUnits: action.payload
+      }
+
     default:
       return state
   }

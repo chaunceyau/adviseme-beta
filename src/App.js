@@ -28,7 +28,7 @@ export const client = new ApolloClient({
       if (networkError) console.log(`[Network error]: ${networkError}`)
     }),
     new HttpLink({
-      uri: 'https://api.graph.cool/simple/v1/cjjpxah2l102u0189cbdxckg4',
+      uri: 'https://advisemebetaserver.herokuapp.com/advisemeserver/dev',
       credentials: 'same-origin'
     })
   ]),

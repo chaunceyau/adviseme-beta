@@ -1,9 +1,13 @@
 export function toTitleCase(str) {
-  return str.replace(/(^|[\s-])\S/g, function (match) {
-    return match.toUpperCase();
-});
+  return str
+    .toLowerCase()
+    .split(' ')
+    .map(function(word) {
+      return word.replace(word[0], word[0].toUpperCase())
+    })
+    .join(' ')
 }
 
 export function replaceUnderscoreWithSpace(str) {
-  return str.replace(/_/g, " ");
+  return str.replace(/_/g, ' ')
 }

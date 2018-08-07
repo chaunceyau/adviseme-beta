@@ -8,7 +8,7 @@ import Header from './components/layout/Header'
 import Routes from './Routes'
 import { containerStyle } from './util/Constants'
 import BreadcrumbView from './components/layout/BreadcrumbView'
-import store from './store'
+import store, { persistor } from './store'
 import { setCurrentStudent } from './actions'
 
 // TODO: ADD QUERY BATCHING
@@ -17,6 +17,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
 import { ApolloLink } from 'apollo-link'
+import { PersistGate } from 'redux-persist/integration/react'
+import ContentLoading from './pages/ContentLoading'
 
 export const client = new ApolloClient({
   link: ApolloLink.from([
@@ -45,13 +47,15 @@ export default class App extends Component {
     return (
       <ApolloProvider client={client}>
         <Provider store={store}>
-          <React.Fragment>
-            <Header />
-            <Container style={containerStyle}>
-              <BreadcrumbView />
-              <Routes />
-            </Container>
-          </React.Fragment>
+          <PersistGate loading={<ContentLoading />} persistor={persistor}>
+            <React.Fragment>
+              <Header />
+              <Container style={containerStyle}>
+                <BreadcrumbView />
+                <Routes />
+              </Container>
+            </React.Fragment>
+          </PersistGate>
         </Provider>
       </ApolloProvider>
     )

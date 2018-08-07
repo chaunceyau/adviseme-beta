@@ -8,9 +8,9 @@ const containerStyle = {
 
 const urls = {
   plan: {
-    default: "/plan/",
-    planner: "/plan/planner/",
-    requirements: "/plan/requirements/",
+    home: "/plan",
+    planner: "/plan/planner",
+    requirements: "/plan/requirements",
     options: "/plan/requirements/:requirementName"
   }
 };

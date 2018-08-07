@@ -18,7 +18,6 @@ export function setCurrentStudent(id) {
   }
 }
 
-
 export function setUnplannedCourses(courses) {
   return {
     type: ActionTypes.SET_UNPLANNED_COURSES,

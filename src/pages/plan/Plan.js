@@ -2,24 +2,17 @@ import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 // Component Imports
-import PlanWelcome from './PlanWelcome'
 import CourseOptions from './CourseOptions'
 import DegreeRequirements from './DegreeRequirements'
 import CoursePlanner from './CoursePlanner'
 import PlanStageBar from '../../components/plan/PlanStageBar'
 
-import {
-  REQUIREMENTS_PAGE,
-  COURSE_PLANNING_PAGE,
-  COURSE_OPTIONS_PAGE,
-  PLAN_HOMEPAGE,
-  MAJOR_SELECTION_PAGE
-} from '../../constants/constants'
 import { Query } from 'react-apollo'
 import { GET_STUDENT_PLAN_INFORMATION } from '../../graphql/queries'
 import MajorSelection from './MajorSelection'
 import store from '../../store'
 import { setUnplannedCourses, setAcademicUnits } from '../../actions'
+import { urls } from '../../util/Constants';
 
 class Plan extends Component {
   render3() {
@@ -56,15 +49,14 @@ class Plan extends Component {
               <React.Fragment>
                 <PlanStageBar path={this.props.location.pathname} />
                 <Switch>
-                  <Route path={PLAN_HOMEPAGE} component={PlanWelcome} exact />
-                  <Route path={MAJOR_SELECTION_PAGE} component={MajorSelection} exact />
-                  <Route path={COURSE_PLANNING_PAGE} render={() => <CoursePlanner studentAcademicUnits={studentAcademicUnits} />} />
+                  <Route path={urls.plan.home} component={MajorSelection} exact />
+                  <Route path={urls.plan.planner} render={() => <CoursePlanner studentAcademicUnits={studentAcademicUnits} />} />
                   <Route
-                    path={REQUIREMENTS_PAGE}
+                    path={urls.plan.requirements}
                     render={() => <DegreeRequirements loading={loading} degreePrograms={degreePrograms} />}
                     exact
                   />
-                  <Route path={COURSE_OPTIONS_PAGE} component={CourseOptions} />
+                  <Route path={urls.plan.options} component={CourseOptions} />
                 </Switch>
               </React.Fragment>
             )

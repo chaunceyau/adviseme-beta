@@ -1,27 +1,61 @@
 import React, { Component } from 'react'
-import { Segment, Grid } from 'semantic-ui-react'
-
-// const majors = ['finance', '1', '2', '3', '12', '23', '34', '15', '25', '35', '125', '235', '334']
+import { Segment, Dropdown, Button, Grid } from 'semantic-ui-react'
+import _ from 'lodash'
+import { Query } from '../../../node_modules/react-apollo'
+import gql from '../../../node_modules/graphql-tag'
+import { toTitleCase, replaceUnderscoreWithSpace } from '../../util/Utilities'
 
 class MajorSelection extends Component {
+  state = {
+    majorID: -1
+  }
   render() {
+    const { majorID } = this.state
+    console.log('clicked', this.state)
+
     return (
-      <Segment style={{ height: '70vh' }}>
-        <Grid>
-          <Grid.Row>
-            <Grid.Column>Select Your Degree Program</Grid.Column>
-          </Grid.Row>
-          <Grid.Row style={{ overflowX: 'auto', width: 500, maxHeight:100 }}>
-            {/* {majors.map(major => (
-              <Grid.Column key={major} style={{ width: 200, height:10 }}>
-                <Card>
-                  <Card.Content>{major}</Card.Content>
-                </Card>
-              </Grid.Column>
-            ))} */}
-          </Grid.Row>
-        </Grid>
-      </Segment>
+      <Query
+        query={gql`
+          {
+            degreePrograms {
+              id
+              name
+            }
+          }
+        `}
+      >
+        {({ loading, error, data: { degreePrograms } }) => {
+          if (degreePrograms)
+            return (
+              <Segment>
+                <h3>Please select your major</h3>
+                <Dropdown
+                  placeholder="Select Major"
+                  fluid
+                  search
+                  selection
+                  options={degreePrograms.map(({ name: text, id: value, ...rest }) => {
+                    text = toTitleCase(replaceUnderscoreWithSpace(text))
+                    return { text, value, ...rest }
+                  })}
+                  onChange={(e, data) => {
+                    this.setState({ majorID: data.value })
+                  }}
+                />
+                <Grid style={{ marginTop: '1rem' }}>
+                  <Grid.Row>
+                    <Grid.Column textAlign="right">
+                      <Button disabled={majorID === -1} positive={majorID !== -1} onClick={()=>{}}>
+                        Continue
+                      </Button>
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              </Segment>
+            )
+          return null
+        }}
+      </Query>
     )
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Breadcrumb, Segment } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
-import { toTitleCase } from '../../constants/utilities'
+import { toTitleCase } from '../../util/Utilities'
 
 class BreadcrumbView extends Component {
   render() {

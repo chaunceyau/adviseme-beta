@@ -11,7 +11,7 @@ const urls = {
     home: "/plan",
     planner: "/plan/planner",
     requirements: "/plan/requirements",
-    options: "/plan/requirements/:requirementName"
+    options: "/plan/requirements/options"
   }
 };
 

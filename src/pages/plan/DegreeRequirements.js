@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { Header, Segment, Grid } from 'semantic-ui-react'
-
+import { Header, Segment, Grid, Message } from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom'
 //
 import DegreeRequirementGroup from '../../components/plan/requirements/DegreeRequirementGroup'
 import ContentLoading from '../ContentLoading'
+import { GET_REQUIREMENTS_FOR_DEGREE } from '../../graphql/queries'
+import { Query } from '../../../node_modules/react-apollo'
 
 //
 class DegreeRequirements extends Component {
@@ -12,20 +14,16 @@ class DegreeRequirements extends Component {
    * @param {*} degreePrograms
    */
   renderDegreeProgramBlocks(degreePrograms) {
+    if (!degreePrograms) return <span>It seems like we've reached an error..</span>
     // map through each degree program a student is in
-    return degreePrograms.map(degree => {
-      let topLevelRequirements = []
 
-      // create the accordion then loop through requirements
-      degree.degreeProgramRequirements.forEach(requirement => {
-        topLevelRequirements.push(requirement)
-      })
+    return degreePrograms.map(degreeProgram => {
       return (
-        <React.Fragment key={'degReqFrag'}>
+        <React.Fragment key={degreeProgram.id}>
           <Header attached="top">
             <Grid>
               <Grid.Column floated="left" width={8}>
-                <span>{degree.name}</span>
+                <span>{degreeProgram.name}</span>
               </Grid.Column>
               <Grid.Column floated="right" width={8} textAlign="right">
                 <span>115 of 120 hours</span>
@@ -33,27 +31,45 @@ class DegreeRequirements extends Component {
             </Grid>
           </Header>
           <Segment attached="bottom">
-            <DegreeRequirementGroup key={degree.id} requirements={topLevelRequirements} />
+            <DegreeRequirementGroup key={degreeProgram.id} requirements={degreeProgram.degreeProgramRequirements} />
           </Segment>
         </React.Fragment>
       )
     })
   }
+
+  renderNotification() {
+    if (!this.props.notification) return null
+    const { title, content, positive } = this.props.notification
+    return (
+      <Message positive={positive} negative={!positive} onDismiss={() => this.props.clearNotification()}>
+        <Message.Header>{title}</Message.Header>
+        <p>{content}</p>
+      </Message>
+    )
+  }
+
   /**
    *
    */
   render() {
-    if (this.props.loading)
-      return (
-        <React.Fragment>
-          <Header attached="top">Degree Requirements</Header>
-          <Segment attached="bottom">
-            <h4>Select courses to fulfill the following requirements:</h4>
-            <ContentLoading />
-          </Segment>
-        </React.Fragment>
-      )
-    return this.renderDegreeProgramBlocks(this.props.degreePrograms)
+    if (!this.props.degreePrograms.length) return <Redirect to="/plan" />
+    return (
+      <Query query={GET_REQUIREMENTS_FOR_DEGREE} variables={{ ids: this.props.degreePrograms }}>
+        {({ loading, error, data }) => {
+          if (loading) return <ContentLoading />
+          if (error) return <span>error</span>
+          if (data) {
+            return (
+              <React.Fragment>
+                {this.renderNotification()}
+                {this.renderDegreeProgramBlocks(data.degreePrograms)}
+              </React.Fragment>
+            )
+          }
+        }}
+      </Query>
+    )
   }
 }
 export default DegreeRequirements

@@ -20,7 +20,6 @@ class PlanStageBar extends Component {
           onClick={this.handleItemClick}
           as={Link}
           to={urls.plan.home}
-          // disabled
         >
           <Icon name="list alternate outline" />
           <Step.Content>
@@ -34,6 +33,7 @@ class PlanStageBar extends Component {
           onClick={this.handleItemClick}
           as={Link}
           to={urls.plan.requirements}
+          disabled={this.props.disable}
         >
           <Icon name="book" />
           <Step.Content>
@@ -48,6 +48,7 @@ class PlanStageBar extends Component {
           onClick={this.handleItemClick}
           as={Link}
           to={urls.plan.planner}
+          disabled={this.props.disable}
         >
           <Icon name="calendar outline" />
           <Step.Content>

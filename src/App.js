@@ -9,7 +9,6 @@ import Routes from './Routes'
 import { containerStyle } from './util/Constants'
 import BreadcrumbView from './components/layout/BreadcrumbView'
 import store, { persistor } from './store'
-import { setCurrentStudent } from './actions'
 
 // TODO: ADD QUERY BATCHING
 import { ApolloClient } from 'apollo-client'
@@ -43,7 +42,6 @@ export const client = new ApolloClient({
 
 export default class App extends Component {
   render() {
-    store.dispatch(setCurrentStudent('cjkab5xca7am40172xazvahh8'))
     return (
       <ApolloProvider client={client}>
         <Provider store={store}>

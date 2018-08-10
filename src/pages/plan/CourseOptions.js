@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 
-import { connect } from 'react-redux'
 import { Segment, Header, Button, Modal, Popup } from 'semantic-ui-react'
-import { Query, Mutation } from 'react-apollo'
-import { GET_COURSE_OPTIONS_FOR_REQUIREMENT, STUDENT_ID, ADD_COURSE_TO_USER_PLAN } from '../../graphql/queries'
+import { Query } from 'react-apollo'
+import { GET_COURSE_OPTIONS_FOR_REQUIREMENT } from '../../graphql/queries'
 import ContentLoading from '../ContentLoading'
 import { Redirect } from 'react-router-dom'
+import { store } from '../../store'
+import { addCourseToPlan } from '../../actions'
 
 /**
  * View containing all of the course options for an individual requirement
@@ -16,28 +17,37 @@ class CourseOptions extends Component {
    *
    */
   render() {
+    if (!this.props.location.state || !this.props.location.state.requirementGroupID) return <Redirect to="/plan/requirements" />
     return (
-      <Query
-        query={GET_COURSE_OPTIONS_FOR_REQUIREMENT}
-        variables={{ requirementGroupID: this.props.location.state.requirementGroupID }}
-      >
-        {({ loading, error, data: { DegreeProgramRequirement } }) => {
+      <Query query={GET_COURSE_OPTIONS_FOR_REQUIREMENT} variables={{ id: this.props.location.state.requirementGroupID }}>
+        {({ loading, error, data: { degreeProgramRequirement } }) => {
           if (loading) return <ContentLoading />
           if (error) return <span>error</span>
-          if (DegreeProgramRequirement) {
-            const { degreeRequirementGroupName, courseOptions } = DegreeProgramRequirement
+          if (degreeProgramRequirement) {
+            const { name, courseOptions } = degreeProgramRequirement
+            // if no options exist, inform user
+            if (!courseOptions.length)
+              return (
+                <Segment>
+                  <b>{name}</b> course options have not yet been added.
+                </Segment>
+              )
+
+            // if options exist, group them by department
             const groupedCourseOptions = courseOptions.reduce((acc, val) => {
               acc[val.department.name] = acc[val.department.name] || []
               acc[val.department.name].push(val)
               return acc
             }, {})
+
+            // render options
             return (
               <Segment>
                 Course Options for&nbsp;
-                <b>{degreeRequirementGroupName}</b>
+                <b>{name}</b>
                 <br />
                 {Object.entries(groupedCourseOptions).map(entry => (
-                  <CourseOption key={entry[0]} entry={entry} currentStudentID={this.props.currentStudentID} />
+                  <CourseCategory key={entry[0]} entry={entry} currentStudentID={'0'} />
                 ))}
               </Segment>
             )
@@ -48,19 +58,13 @@ class CourseOptions extends Component {
   }
 }
 
-class CourseOption extends Component {
+class CourseCategory extends Component {
   state = {
-    openID: -1,
     redirect: false
   }
 
-  handleClick = id => this.setState({ openID: id })
-
-  handleClose = () => this.setState({ openID: -1 })
-
   render() {
     const { entry } = this.props
-    if (this.state.redirect) return <Redirect to="/plan/requirements/" />
     return (
       <React.Fragment>
         <Header as="h5" attached="top">
@@ -68,52 +72,7 @@ class CourseOption extends Component {
         </Header>
         <Segment attached>
           {entry[1].map(course => {
-            const { id, number, name, description, department } = course
-            return (
-              <React.Fragment key={id}>
-                <Popup
-                  trigger={
-                    <Button key={id + 'btn'} onClick={() => this.handleClick(id)}>
-                      {department.name} {number}
-                    </Button>
-                  }
-                  content={name}
-                />
-                <Modal size={'small'} key={id} onClose={this.handleClose} open={this.state.openID === id}>
-                  <Modal.Header>
-                    {department.name} {number} {name}
-                  </Modal.Header>
-                  <Modal.Content>{description}</Modal.Content>
-
-                  <Modal.Actions>
-                    <Button onClick={this.handleClose}>Close</Button>
-                    <Mutation
-                      mutation={ADD_COURSE_TO_USER_PLAN}
-                      // refetchQueries={[{ query: GET_STUDENT_UNPLANNED_COURSES }]}
-                      variables={{ courseID: id, userID: STUDENT_ID }}
-                    >
-                      {(addCourseToPlan, { loading, data }) => {
-                        return (
-                          <Button
-                            positive
-                            loading={loading}
-                            onClick={() =>
-                              addCourseToPlan()
-                                .then(data => {
-                                  this.setState({ redirect: true, openID: -1 })
-                                })
-                                .catch(err => console.log(err, 'rr'))
-                            }
-                          >
-                            Add Course
-                          </Button>
-                        )
-                      }}
-                    </Mutation>
-                  </Modal.Actions>
-                </Modal>
-              </React.Fragment>
-            )
+            return <Course course={course} key={course.id} />
           })}
         </Segment>
       </React.Fragment>
@@ -121,12 +80,53 @@ class CourseOption extends Component {
   }
 }
 
-// redux
+class Course extends Component {
+  state = {
+    open: false,
+    redirect: false
+  }
 
-const mapStateToProps = store => {
-  return {
-    currentStudentID: store.user.currentStudent.id
+  handleClick = id => this.setState({ open: !this.state.open })
+
+  handleClose = () => this.setState({ open: !this.state.open })
+
+  render() {
+    const { id, number, name, description, department } = this.props.course
+    if (this.state.redirect) return <Redirect to="/plan/requirements/" />
+
+    return (
+      <React.Fragment>
+        <Popup
+          trigger={
+            <Button key={id + 'btn'} onClick={() => this.handleClick(id)}>
+              {department.name} {number}
+            </Button>
+          }
+          content={name}
+        />
+        <Modal size={'small'} key={id} onClose={this.handleClose} open={this.state.open}>
+          <Modal.Header>
+            {department.name} {number} {name}
+          </Modal.Header>
+          <Modal.Content>{description}</Modal.Content>
+
+          <Modal.Actions>
+            <Button onClick={this.handleClose}>Close</Button>
+            <Button
+              positive
+              onClick={() => {
+                store.dispatch(addCourseToPlan(this.props.course))
+                this.setState({ redirect: true, open: false })
+              }}
+            >
+              Add Course
+            </Button>
+          </Modal.Actions>
+        </Modal>
+      </React.Fragment>
+    )
   }
 }
-export default connect(mapStateToProps)(CourseOptions)
+
+export default CourseOptions
 //

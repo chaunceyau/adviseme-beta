@@ -17,7 +17,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, reducer)
 
 // apply middlewares
-const middlewares = applyMiddleware(promise(), thunk, logger)
+const middlewares = applyMiddleware(promise(), thunk, logger, require('redux-immutable-state-invariant').default())
 
 export const store = createStore(persistedReducer, middlewares)
 export const persistor = persistStore(store)

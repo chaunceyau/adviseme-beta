@@ -26,3 +26,18 @@ export function updateItemInArray(array, itemId, updateItemCallback) {
 
   return updatedItems
 }
+
+export function updateItemInArrayByName(array, name, updateItemCallback) {
+  const updatedItems = array.map(item => {
+    if (item.name !== name) {
+      // Since we only want to update one item, preserve all others as they are now
+      return item
+    }
+
+    // Use the provided callback to create an updated item
+    const updatedItem = updateItemCallback(item)
+    return updatedItem
+  })
+
+  return updatedItems
+}

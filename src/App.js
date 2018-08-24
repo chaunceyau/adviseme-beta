@@ -18,6 +18,7 @@ import { onError } from 'apollo-link-error'
 import { ApolloLink } from 'apollo-link'
 import { PersistGate } from 'redux-persist/integration/react'
 import ContentLoading from './pages/ContentLoading'
+import { test123 } from './actions'
 
 export const client = new ApolloClient({
   link: ApolloLink.from([
@@ -42,6 +43,8 @@ export const client = new ApolloClient({
 
 export default class App extends Component {
   render() {
+    test123()
+
     return (
       <ApolloProvider client={client}>
         <Provider store={store}>

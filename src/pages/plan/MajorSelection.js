@@ -4,6 +4,7 @@ import { Query } from 'react-apollo'
 import { Segment, Dropdown, Button, Grid, Header } from 'semantic-ui-react'
 //
 import { toTitleCase, replaceUnderscoreWithSpace } from '../../util/Utilities'
+import ContentLoading from '../ContentLoading'
 class MajorSelection extends Component {
   componentDidMount() {
     // this.props.setDegreePrograms([])
@@ -22,6 +23,7 @@ class MajorSelection extends Component {
         `}
       >
         {({ loading, error, data: { degreePrograms } }) => {
+          if (loading) return <ContentLoading />
           if (degreePrograms)
             return (
               <React.Fragment>

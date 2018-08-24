@@ -7,19 +7,25 @@ import CourseOptions from './CourseOptions'
 import DegreeRequirements from './DegreeRequirements'
 import CoursePlanner from './CoursePlanner'
 import PlanStageBar from '../../components/plan/PlanStageBar'
+import faker from 'faker'
 
-import { setDegreePrograms, clearNotification } from '../../actions'
+import { setDegreePrograms, clearNotification, removeCourseFromPlan, addCourseToUnplannedCourses } from '../../actions'
 import MajorSelection from './MajorSelection'
 import { urls } from '../../util/Constants'
+import CompletedCoursework from './CompletedCoursework'
+import AddNewCourses from './AddNewCourses'
 
 class Plan extends Component {
   render() {
+    let k = true
     return (
       <React.Fragment>
         <PlanStageBar path={this.props.location.pathname} disable={this.props.degreePrograms.length < 1 ? true : false} />
         <Switch>
+          {/* <Route path={'/plan/gql'} component={AddNewCourses} /> */}
+
           <Route
-            path={urls.plan.home}
+            path={urls.plan.degrees}
             render={() => (
               <MajorSelection
                 degreePrograms={this.props.degreePrograms}
@@ -42,7 +48,19 @@ class Plan extends Component {
             )}
             exact
           />
-          <Route path={urls.plan.options} component={CourseOptions} />
+          <Route path={urls.plan.completed} component={CompletedCoursework} />
+          <Route
+            path={urls.plan.options}
+            render={() => {
+              return (
+                <CourseOptions
+                  removeCourseFromPlan={this.props.removeCourseFromPlan}
+                  addCourseToUnplannedCourses={this.props.addCourseToUnplannedCourses}
+                  {...this.props}
+                />
+              )
+            }}
+          />
         </Switch>
       </React.Fragment>
     )
@@ -56,7 +74,9 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = {
   setDegreePrograms,
-  clearNotification
+  clearNotification,
+  removeCourseFromPlan,
+  addCourseToUnplannedCourses
 }
 
 export default connect(

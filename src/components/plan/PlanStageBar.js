@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Step, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-
+import { connect } from 'react-redux'
 // used to control the urls
 import { urls } from '../../util/Constants'
 
@@ -13,32 +13,52 @@ class PlanStageBar extends Component {
   render() {
     const { path } = this.props
     return (
-      <Step.Group fluid size="small">
+      <Step.Group fluid size="tiny">
+        {/* TODO: completed here for completed steps */}
         <Step
+          completed={this.props.degreeSelected}
           name="major"
-          active={path === urls.plan.home || path === urls.plan.home + '/'}
+          active={path.startsWith(urls.plan.degrees)}
           onClick={this.handleItemClick}
           as={Link}
-          to={urls.plan.home}
+          to={urls.plan.degrees}
         >
-          <Icon name="list alternate outline" />
+          <Icon name="student" />
           <Step.Content>
             <Step.Title>Major Selection</Step.Title>
-            <Step.Description>Select your major for planning</Step.Description>
+            <Step.Description>Select your degree programs</Step.Description>
           </Step.Content>
         </Step>
+
+        <Step
+          name="previous"
+          active={path.startsWith(urls.plan.completed)}
+          disabled={!this.props.degreeSelected}
+          onClick={this.handleItemClick}
+          as={Link}
+          to={urls.plan.completed}
+          disabled={this.props.disable}
+        >
+          <Icon name="history" />
+          <Step.Content>
+            <Step.Title>Completed Courses</Step.Title>
+            <Step.Description>Select completed coursework</Step.Description>
+          </Step.Content>
+        </Step>
+
         <Step
           name="select"
           active={path.startsWith(urls.plan.requirements)}
           onClick={this.handleItemClick}
+          disabled={!this.props.degreeSelected}
           as={Link}
           to={urls.plan.requirements}
           disabled={this.props.disable}
         >
-          <Icon name="book" />
+          <Icon name="list alternate outline" />
           <Step.Content>
             <Step.Title>Course Selection</Step.Title>
-            <Step.Description>Choose the classes you desire</Step.Description>
+            <Step.Description>Choose coursework to plan</Step.Description>
           </Step.Content>
         </Step>
 
@@ -46,6 +66,7 @@ class PlanStageBar extends Component {
           name="plan"
           active={path.startsWith(urls.plan.planner)}
           onClick={this.handleItemClick}
+          disabled={!this.props.degreeSelected}
           as={Link}
           to={urls.plan.planner}
           disabled={this.props.disable}
@@ -53,7 +74,7 @@ class PlanStageBar extends Component {
           <Icon name="calendar outline" />
           <Step.Content>
             <Step.Title>Plan Coursework</Step.Title>
-            <Step.Description>Plan each academic unit towards graduation</Step.Description>
+            <Step.Description>Plan individual semesters</Step.Description>
           </Step.Content>
         </Step>
       </Step.Group>
@@ -61,4 +82,8 @@ class PlanStageBar extends Component {
   }
 }
 
-export default PlanStageBar
+const mapStateToProps = store => ({
+  degreeSelected: store.user.degreePrograms.length > 0
+})
+
+export default connect(mapStateToProps)(PlanStageBar)

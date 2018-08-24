@@ -1,0 +1,1261 @@
+[{
+    "courseName": "Accounting for Business Operations",
+    "courseNumber": 231,
+    "courseDepartment": "ACCTG",
+    "credits": "3",
+    "description": "An introduction to the operating activities of businesses and the roles that accounting information plays in planning, evaluating, and recording those activities. An introduction to financial statements is included.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": true,
+    "requisites": {
+        "prerequisites": "MATH 100 and GENBA 110 or sophomore standing.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning"]
+},
+{
+    "courseName": "Accounting for Investing and Financing",
+    "courseNumber": 241,
+    "courseDepartment": "ACCTG",
+    "credits": "3",
+    "description": "Extends the concepts of planning and evaluation to the business activities of acquiring, disposing, and financing productive assets. Financial statement analysis will be covered.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": true,
+    "requisites": {
+        "prerequisites": "ACCTG 231.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning"]
+},
+{
+    "courseName": "Intermediate Accounting Processes",
+    "courseNumber": 331,
+    "courseDepartment": "ACCTG",
+    "credits": "3",
+    "description": "This course should increase the knowledge and the understanding about the intermediate accounting processes found in a business entity.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "ACCTG 241.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Social Sciences"]
+},
+{
+    "courseName": "Taxation I",
+    "courseNumber": 342,
+    "courseDepartment": "ACCTG",
+    "credits": "3",
+    "description": "Fundamental concepts of income determination in federal and state income tax regulations; examination of the impact of tax regulation on business and personal financial planning and decision making.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "ACCTG 331, or ACCTG 241 and senior standing.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Social Sciences"]
+},
+{
+    "courseName": "Accounting Information Systems",
+    "courseNumber": 413,
+    "courseDepartment": "ACCTG",
+    "credits": "3",
+    "description": "This course should increase the knowledge and th understanding of the flow of information through an enterprise, the sources and nature of documents, and the controls necessary to insure the accuracy and reliability of information. The course will also incorporate information technology controls, current computer systems, data analytics, and software applications into the course.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "ACCTG 241.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Social Sciences"]
+},
+{
+    "courseName": "Problems in Accounting",
+    "courseNumber": 431,
+    "courseDepartment": "ACCTG",
+    "credits": "1-18",
+    "description": "",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Background of courses needed for the problems undertaken in accounting and consent of instructor.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Managerial Reporting",
+    "courseNumber": 432,
+    "courseDepartment": "ACCTG",
+    "credits": "3",
+    "description": "Identifying relevant accounting data and organizing, summarizing, and analyzing that data into information useful for planning and budgeting, decision making, controlling, and evaluating functions of management.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "ACCTG 331, MANGT 421.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Social Sciences"]
+},
+{
+    "courseName": "Financial Reporting",
+    "courseNumber": 433,
+    "courseDepartment": "ACCTG",
+    "credits": "3",
+    "description": "An introduction to the U.S. and international rules and regulations that govern current reporting to external entities by profit entities.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "ACCTG 331.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Social Sciences"]
+},
+{
+    "courseName": "Accounting for Not-For-Profit Entities",
+    "courseNumber": 434,
+    "courseDepartment": "ACCTG",
+    "credits": "2",
+    "description": "An introduction to the source of authoritative guidance, rules and regulations that govern current reporting to external entities by not-for-profit entities.",
+    "typicallyOffered": [],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "ACCTG 641",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning"]
+},
+{
+    "courseName": "Auditing I",
+    "courseNumber": 442,
+    "courseDepartment": "ACCTG",
+    "credits": "3",
+    "description": "An introduction to the environment of auditing and the objectives and techniques of both financial and operational auditing.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "ACCTG 433, For accounting majors only.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Social Sciences"]
+},
+{
+    "courseName": "Financial Statement Analysis",
+    "courseNumber": 445,
+    "courseDepartment": "ACCTG",
+    "credits": "3",
+    "description": "This course will develop a student’s skills and knowledge in the analysis and interpretation of corporate financial statements and their related footnotes. The class will encourage the student to think logically and creatively about the strengths and weaknesses of accounting information available to investors and shareholders. The main course objective is for the student to be capable of doing an in-depth analysis of a company’s financial and operating performance from several financial statements.",
+    "typicallyOffered": ["SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "ACCTG 231 and ACCTG 241, and FINAN 450.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning"]
+},
+{
+    "courseName": "Undergraduate Research Experience",
+    "courseNumber": 490,
+    "courseDepartment": "ACCTG",
+    "credits": "0-3",
+    "description": "Open to students pursuing undergraduate research projects.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Law for Accountants",
+    "courseNumber": 494,
+    "courseDepartment": "ACCTG",
+    "credits": "3",
+    "description": "An intensive study of an accountant’s professional responsibilities to the public and the profession and the knowledge of the legal implications of business transactions, particularly as they relate to accounting and auditing.",
+    "typicallyOffered": ["On sufficient demand"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Senior standing.",
+        "corequisites": ""
+    },
+    "kstate8": ["Ethical Reasoning and Responsibility", "Social Sciences"]
+},
+{
+    "courseName": "Accounting Internship",
+    "courseNumber": 631,
+    "courseDepartment": "ACCTG",
+    "credits": "3",
+    "description": "Provides a full semester of practical accounting experience prior to entering graduate accounting program.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Accounting Theory and History",
+    "courseNumber": 641,
+    "courseDepartment": "ACCTG",
+    "credits": "3",
+    "description": "The theories which underlie the practice of accounting and financial reporting including a historical perspective on the evolution of the theories.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "ACCTG 331.",
+        "corequisites": ""
+    },
+    "kstate8": ["Historical Perspectives", "Social Sciences"]
+},
+{
+    "courseName": "Accounting Research and Communication",
+    "courseNumber": 642,
+    "courseDepartment": "ACCTG",
+    "credits": "3",
+    "description": "Use of the sources of authoritative guidance in resolving complex, professionally oriented problems that include auditing, financial reporting, and tax reporting. Students analyze numerous unstructured cases and present their conclusion with written reports and oral presentations.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "ACCTG 342, 433, and 442.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Social Sciences"]
+},
+{
+    "courseName": "Advanced Financial Reporting",
+    "courseNumber": 731,
+    "courseDepartment": "ACCTG",
+    "credits": "3",
+    "description": "An examination of the reporting requirements of large (often multinational) corporations, e.g., foreign currency translation, interim and segment reporting, and business combinations.",
+    "typicallyOffered": ["FALL"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "ACCTG 433.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Aerospace Studies Lab",
+    "courseNumber": 99,
+    "courseDepartment": "AERO",
+    "credits": "0",
+    "description": "The leadership laboratory for aerospace studies. Students will receive leadership training and experience as well as training in Air Force customs and courtesies. This course runs concurrently with AERO 100, 200, 300, and 400 level classes; is required for all cadets; and includes mandatory physical fitness training.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Instructor permission.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Aerospace Studies 1A",
+    "courseNumber": 110,
+    "courseDepartment": "AERO",
+    "credits": "1",
+    "description": "A study of the mission and organization of the United States Air Force; United States general purpose and aerospace support forces.",
+    "typicallyOffered": ["FALL"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Aerospace Studies 1B",
+    "courseNumber": 111,
+    "courseDepartment": "AERO",
+    "credits": "1",
+    "description": "United States strategic offensive and defensive forces; their mission, function, and employment.",
+    "typicallyOffered": ["SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Aerospace Studies 2A",
+    "courseNumber": 210,
+    "courseDepartment": "AERO",
+    "credits": "1",
+    "description": "The development of air power from its beginnings to the end of World War II. It traces the development of various concepts of employment of air power.",
+    "typicallyOffered": ["FALL"],
+    "uge": true,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": ["Historical Perspectives"]
+},
+{
+    "courseName": "Aerospace Studies 2B",
+    "courseNumber": 211,
+    "courseDepartment": "AERO",
+    "credits": "1",
+    "description": "The development of air power from the close of World War II to the present. It focuses upon factors which have prompted research and technological change and stresses significant examples of the impact of air power on strategic thought.",
+    "typicallyOffered": ["SPRING"],
+    "uge": true,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": ["Historical Perspectives"]
+},
+{
+    "courseName": "AFROTC Summer Program",
+    "courseNumber": 215,
+    "courseDepartment": "AERO",
+    "credits": "1-4",
+    "description": "Provides AFROTC cadets up to 13 options for practical leadership and specialized training through exposure to USAF functions, deployments, and employment operations. Foreign language and cultural immersions also available/possible but overall emphasis remains on leadership development and practicum. All programs conducted off-site at selected Air Forces bases and other locations in the USA and abroad.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Officer Leadership Studies 3A",
+    "courseNumber": 310,
+    "courseDepartment": "AERO",
+    "credits": "3",
+    "description": "A study of USAF professionalism, leadership, and management includes the meaning of professionalism, professional responsibilities, leadership theory, functions and practices, management principles and functions, problem solving, and management tools, practices, and controls.",
+    "typicallyOffered": ["FALL"],
+    "uge": true,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": ["Ethical Reasoning and Responsibility", "Human Diversity within the U.S."]
+},
+{
+    "courseName": "Officer Leadership Studies 3B",
+    "courseNumber": 311,
+    "courseDepartment": "AERO",
+    "credits": "3",
+    "description": "Continuation of AERO 310.",
+    "typicallyOffered": ["SPRING"],
+    "uge": true,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": ["Ethical Reasoning and Responsibility", "Human Diversity within the U.S."]
+},
+{
+    "courseName": "Regional Studies and Defense Policy",
+    "courseNumber": 410,
+    "courseDepartment": "AERO",
+    "credits": "3",
+    "description": "This course will examine the role of the professional officer in a democratic society; socialization processes within the armed services; the requisites for maintaining adequate national security forces; political, economic, and social constraints upon the overall defense policy-making process.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": true,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": ["Global Issues and Perspectives", "Social Sciences"]
+},
+{
+    "courseName": "Aerospace Studies/Civil Military Relationships",
+    "courseNumber": 411,
+    "courseDepartment": "AERO",
+    "credits": "3",
+    "description": "Focusing on the armed forces as an integral element of society, this course provides an examination of the broad range of American civil-military relations and the environmental context in which defense policy is formulated. Communicative skills are stressed. The role of contemporary aerospace power, and current and future employment of aerospace forces will also be examined. The last portion of this course concentrates on preparation for active duty military service.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Problem Solving in Aerospace Studies",
+    "courseNumber": 499,
+    "courseDepartment": "AERO",
+    "credits": "1-3",
+    "description": "Work offered in any of the AFROTC general or professional courses for students out of phase for graduation; material covered in a basic or advanced course.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Instructor consent.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "African Study Abroad",
+    "courseNumber": 400,
+    "courseDepartment": "AFRI",
+    "credits": "1-4",
+    "description": "The study abroad educational trip will provide students the opportunity to apply their knowledge of an African language and to learn first hand about various African societies and cultures, farming systems, environment, health and other issues related to their host country.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Seminar I",
+    "courseNumber": 501,
+    "courseDepartment": "AFRI",
+    "credits": "3",
+    "description": "Economics of Poverty and Wealth Creation in Africa (social science component). Explores opportunities for breaking the cycle of poverty across the continent using strategic wealth creation techniques that overcome poverty. Focusing on the agriculture and food system, the environment and natural resources, and the health of the African people.",
+    "typicallyOffered": ["FALL"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Seminar II",
+    "courseNumber": 502,
+    "courseDepartment": "AFRI",
+    "credits": "3",
+    "description": "African Development. Introduction to current political and economic conditions facing Africa from historical, social, economic, political, and human context. Solutions to the current problems confronting the African continent are analyzed.",
+    "typicallyOffered": ["SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Introduction to Agricultural Communications",
+    "courseNumber": 110,
+    "courseDepartment": "AGCOM",
+    "credits": "3",
+    "description": "Introduction to agricultural communications programs, activities, careers, and trends. Orientation to department, college, and university policies and services to enhance student success. Required of all students beginning a major in agricultural communications.",
+    "typicallyOffered": ["FALL"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Layout and Design Principles",
+    "courseNumber": 210,
+    "courseDepartment": "AGCOM",
+    "credits": "3",
+    "description": "This course uses leading industry-adopted software to develop printed communications pieces to the point of being “printer ready”, addressing design concepts and layout aspects critical to successfully printing a project. Assignments will integrate software functionality and design concepts with print production technology requirements.",
+    "typicallyOffered": ["SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGCOM 110.",
+        "corequisites": ""
+    },
+    "kstate8": ["Aesthetic Interpretation"]
+},
+{
+    "courseName": "Careers in Agricultural Communications",
+    "courseNumber": 300,
+    "courseDepartment": "AGCOM",
+    "credits": "3",
+    "description": "This course provides students with advanced knowledge regarding careers in agricultural communications. Students will learn about how to find, apply for, and manage a position in agricultural communications, including topics related to job search, professional development, workplace conflict, portfolio development, interview skills, writing in a professional environment, and salary negation. An emphasis in workplace ethics through case studies and service learning will be provided.",
+    "typicallyOffered": [],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Sophomore standing AND AGCOM 110 or concurrent enrollment.",
+        "corequisites": ""
+    },
+    "kstate8": ["Ethical Reasoning and Responsibility"]
+},
+{
+    "courseName": "Communicating in the Agricultural Industry",
+    "courseNumber": 310,
+    "courseDepartment": "AGCOM",
+    "credits": "3",
+    "description": "The purpose of this course is to help students identify the influence of communication styles and theories on agricultural issues. Agricultural sales will provide the experiential component for application of communication theory and interpersonal interactions.",
+    "typicallyOffered": ["FALL"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Application of Layout and Printing Techniques in Agriculture and Natural Resources",
+    "courseNumber": 345,
+    "courseDepartment": "AGCOM",
+    "credits": "3",
+    "description": "This course advances students’ understanding of how industry-adopted software and hardware are used to develop printed communications pieces, going from individual application functionality to application integration for developing and managing production projects.",
+    "typicallyOffered": [],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGCOM 210 or MC 341.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Agricultural Business Communications",
+    "courseNumber": 400,
+    "courseDepartment": "AGCOM",
+    "credits": "3",
+    "description": "Written communications as used in agricultural industries. A writing course emphasizing the tools and techniques of writing memos, letters, short and long reports, proposals, and presentations.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "ENGL 100 and sophomore standing or above.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Agricultural Student Magazine",
+    "courseNumber": 410,
+    "courseDepartment": "AGCOM",
+    "credits": "1-5",
+    "description": "Planning, interviewing, and preparing stories, headlines, layouts, advertising, and editing, for the Kansas State Agriculturist published by students in the College of Agriculture.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGCOM 345 and MC 200, MC 221 or MC 280.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Topics in Agricultural Communications",
+    "courseNumber": 420,
+    "courseDepartment": "AGCOM",
+    "credits": "1-3",
+    "description": "Discussions of topics, studies, and activities important to agricultural communications.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Consent of instructor.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Undergraduate Research in Agricultural Communications",
+    "courseNumber": 425,
+    "courseDepartment": "AGCOM",
+    "credits": "1-3",
+    "description": "This course uses qualitative, quantitative or mixed methods to conduct an agricultural and environmental communications research project. A faculty coordinator will assist students through the stages of conducting a research project and reporting its outcomes.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Instructor permission.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning"]
+},
+{
+    "courseName": "Video in Agriculture and Food",
+    "courseNumber": 435,
+    "courseDepartment": "AGCOM",
+    "credits": "3",
+    "description": "Theory of visual storytelling is combined with basic and intermediate video camera and non-linear editing instruction to produce TV documentaries, magazine-type stories, and personal videos for web and broadcast distribution.",
+    "typicallyOffered": ["SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Junior standing AND AGCOM 110 or concurrent enrollment.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Internship in Agricultural Communications",
+    "courseNumber": 550,
+    "courseDepartment": "AGCOM",
+    "credits": "1-3",
+    "description": "The intern works in a professional capacity in areas such as print journalism, electronic media, advertising, photography, and public relations. Student is supervised by a professional and a faculty member. One hour of credit for each four weeks of supervised work. Internship report and presentation required.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGCOM 300 AND instructor permission.",
+        "corequisites": ""
+    },
+    "kstate8": ["Ethical Reasoning and Responsibility"]
+},
+{
+    "courseName": "New Media Technology",
+    "courseNumber": 590,
+    "courseDepartment": "AGCOM",
+    "credits": "3",
+    "description": "This course focuses on the study and application of emerging “new media” technologies to effectively communicate information and market products and programs to general and targeted audiences. Students will study underlying communication theories such as Roger’s Theory of Innovation Diffusion to provide a context of how society adopts and incorporates new technology.",
+    "typicallyOffered": ["FALL"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Junior standing AND AGCOM 110 or concurrent enrollment.",
+        "corequisites": ""
+    },
+    "kstate8": ["Social Sciences"]
+},
+{
+    "courseName": "Capstone Seminar in Agricultural Communications",
+    "courseNumber": 600,
+    "courseDepartment": "AGCOM",
+    "credits": "3",
+    "description": "A capstone experience and project for agricultural communications and journalism students. Includes analysis of trends and issues in the field and discussion of communications planning.",
+    "typicallyOffered": ["SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": ": AGCOM 310, AGCOM 435, and AGCOM 590.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Crisis Communication",
+    "courseNumber": 610,
+    "courseDepartment": "AGCOM",
+    "credits": "3",
+    "description": "Focus is placed on the application of effective crisis communication practices and techniques. Students will learn relevant interpersonal and organizational communication theory, assess/evaluate organizational risks, and develop a crisis communication plan. Students will partner with a community business to create and deliver a comprehensive crisis plan.",
+    "typicallyOffered": ["SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Junior standing AND AGCOM 110 or concurrent enrollment OR instructor permission.",
+        "corequisites": ""
+    },
+    "kstate8": ["Human Diversity within the U.S.", "Social Sciences"]
+},
+{
+    "courseName": "Study Experience in Agricultural Communications and Journalism",
+    "courseNumber": 650,
+    "courseDepartment": "AGCOM",
+    "credits": "3",
+    "description": "Seminar and travel course to prepare students before and after the experience and for students to analyze, critique and report their experiences associated with study tours and short courses.",
+    "typicallyOffered": [],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Instructor permission.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Environmental Communication",
+    "courseNumber": 712,
+    "courseDepartment": "AGCOM",
+    "credits": "3",
+    "description": "Combines theoretical discussions with practical experience regarding communication about environmental issues and provides introduction to natural and applied science topics related to the communications plan.",
+    "typicallyOffered": ["SPRING", "even years Cross-listed MC 712"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Senior standing.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Topics in Agricultural Communications",
+    "courseNumber": 786,
+    "courseDepartment": "AGCOM",
+    "credits": "1-3",
+    "description": "Examination of current topics in agricultural communications.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Agricultural Economics and Agribusiness Orientation",
+    "courseNumber": 105,
+    "courseDepartment": "AGEC",
+    "credits": "1",
+    "description": "Introduction to agricultural economics and agribusiness programs, activities, resources, and careers. Required of all freshmen in agricultural economics or agribusiness at K-State.",
+    "typicallyOffered": ["FALL"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Decision Tools for Agricultural Economics and Agribusiness",
+    "courseNumber": 115,
+    "courseDepartment": "AGEC",
+    "credits": "2",
+    "description": "Development of foundational computer-based empirical skills that address economic and business issues in food and agriculture. Students will learn how to model information on an issue or problem using mathematical spreadsheets to find relevant answers for decision makers and stakeholders.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning"]
+},
+{
+    "courseName": "Agricultural Economics and Agribusiness",
+    "courseNumber": 120,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "A course suggested for all students interested in the agricultural economy. A study of economic principles, with emphasis on their application to the solution of farm, agribusiness, and agricultural industry problems in relationship to other sectors of the United States economy and foreign countries.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": true,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Social Sciences"]
+},
+{
+    "courseName": "Honors Agricultural Economics and Agribusiness",
+    "courseNumber": 121,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "A course suggested for all honors students interested in the agricultural economy. A study of economic principles, with emphasis on their application to the solution of farm, agribusiness, natural resource and agricultural industry problems in relationship to other sectors of the United States economy and foreign countries.The course will include extensive discussion, writing, and computer assignments on application of economic principles to real-world problems and issues.",
+    "typicallyOffered": ["FALL"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Admitted to university honors or college scholars program or instructor permission and eligible for honors program.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Social Sciences"]
+},
+{
+    "courseName": "Small Business Operations",
+    "courseNumber": 202,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Opportunities in business ownership, principles governing the starting of a small enterprise; importance, status, problems, and management of a small business.",
+    "typicallyOffered": ["FALL"],
+    "uge": true,
+    "requisites": {
+        "prerequisites": "ECON 110 or AGEC 120 or AGEC 121 or ECON 120.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Human Diversity within the U.S."]
+},
+{
+    "courseName": "Grain and Livestock Marketing Systems",
+    "courseNumber": 220,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Survey of the institutions and mechanisms that facilitate and regulate the sale and marketing of grain and livestock commodities. Topics include the physical and informational flows in the commodity supply chains, cash pricing, commodity grades to improve market efficiency and the governmental regulations and agencies influencing commodity trading.",
+    "typicallyOffered": ["SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 120 or AGEC 121 or ECON 120.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Global Issues and Perspectives"]
+},
+{
+    "courseName": "Farm and Ranch Management",
+    "courseNumber": 308,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Decision-making process, cost concepts, farm records and financial management, budgeting, time value of money, and introduction to whole farm/ranch planning.",
+    "typicallyOffered": ["FALL"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 120 or AGEC 121 or ECON 120.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Social Sciences"]
+},
+{
+    "courseName": "Contemporary Issues in Global Food and Agricultural Systems",
+    "courseNumber": 315,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "A survey of contemporary economic issues affecting world agricultural systems including population growth, trade, globalization, natural resource and environmental policy.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 120, AGEC 121, ECON 110, or ECON 120.",
+        "corequisites": ""
+    },
+    "kstate8": ["Ethical Reasoning and Responsibility", "Global Issues and Perspectives"]
+},
+{
+    "courseName": "Food and Agribusiness Management",
+    "courseNumber": 318,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "A study of marketing, production, risk, human resource management, and financial management in agribusiness firms. Particular attention is given to the application of economic principles to the management of marketing and farm supply firms.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": true,
+    "requisites": {
+        "prerequisites": "AGEC 120 or AGEC 121 or ECON 120; and MATH 100.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Social Sciences"]
+},
+{
+    "courseName": "Agricultural Policy",
+    "courseNumber": 410,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Institutional and analytical treatment of historical and current economic problems, public policies and government programs affecting agriculture and rural America.",
+    "typicallyOffered": ["FALL"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 120 or AGEC 121 or ECON 120 or ECON 110.",
+        "corequisites": ""
+    },
+    "kstate8": ["Historical Perspectives"]
+},
+{
+    "courseName": "Commodity Futures",
+    "courseNumber": 420,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "This course is designed to introduce students to the purpose, operation, and use of commodity futures and options markets. The objectives are to: (1) understand why futures exchanges and commodity futures contracts exist; (2) understand and be able to forecast basis; (3) understand hedging and be able to design hedging strategies for various commodity producers and users; (4) understand both put and call options and their potential use in a commodity risk management program; and (5) understand the usefulness and shortcomings of fundamental and technical analysis.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": true,
+    "requisites": {
+        "prerequisites": "AGEC 120 or AGEC 121 or ECON 120.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Global Issues and Perspectives"]
+},
+{
+    "courseName": "Agricultural Economics and Agribusiness Seminar",
+    "courseNumber": 441,
+    "courseDepartment": "AGEC",
+    "credits": "1-18",
+    "description": "Seminars of special interest will be offered upon sufficient demand in selected areas relating to agricultural economics and agribusiness or competitive teams qualifying for academic credit.",
+    "typicallyOffered": [],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Agribusiness Internship",
+    "courseNumber": 445,
+    "courseDepartment": "AGEC",
+    "credits": "1-3",
+    "description": "Approved and supervised work-study programs in various areas of agribusiness.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Instructor permission.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Agricultural Economics and Agribusiness Problems",
+    "courseNumber": 450,
+    "courseDepartment": "AGEC",
+    "credits": "1-18",
+    "description": "",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Instructor permission.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "International Food and Agribusiness Study Tour",
+    "courseNumber": 460,
+    "courseDepartment": "AGEC",
+    "credits": "0-6",
+    "description": "An experiential learning course to prepare students for and to immerse them in an international study tour of selected food and agribusiness industries. The topics vary by the tour and the industries studied.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Instructor permission.",
+        "corequisites": ""
+    },
+    "kstate8": ["Global Issues and Perspectives"]
+},
+{
+    "courseName": "Cooperative Management",
+    "courseNumber": 470,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "This course focuses on the unique aspects of the cooperative business model and its evolution over time. Students will utilize course material to gain a deeper understanding of the history and need for cooperatives by applying economic, finance, marketing, and management tools to cooperatives.",
+    "typicallyOffered": [],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 120 or AGEC 121 or ECON 120.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Historical Perspectives"]
+},
+{
+    "courseName": "Production Economics",
+    "courseNumber": 500,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Application of economic principles to problems of agricultural production. Analysis of consumer demand for agricultural products and input and output decisions of the agricultural firm. AGEC 505 is a continuation of this course and they are intended to be taken in consecutive semesters.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 120 or AGEC 121 or ECON 120 and MATH 205.  Recommended prerequisite: AGEC 115.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Social Sciences"]
+},
+{
+    "courseName": "Data Analysis and Optimization",
+    "courseNumber": 501,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Analysis of agricultural business and economic data and optimization for decision making. Study applications of regression, time series analysis and forecasting to agricultural and economic data. Introduction to mathematical programming to model optimization of problems commonly encountered in agricultural economics.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 115, AGEC 120 or AGEC 121 or ECON 120, MATH 205, STAT 350.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning"]
+},
+{
+    "courseName": "Agricultural Market Structures",
+    "courseNumber": 505,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Theory and application of economic principles to marketing problems in agriculture. Pricing of agricultural output and productive services under various forms of economic organization and competition; regional specialization, location, and trade; determinants of economic change; evaluation of economic and consumer welfare.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 120 or AGEC 121 or ECON 120 and MATH 205 and AGEC 500. Recommended prerequisite: AGEC 115.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Social Sciences"]
+},
+{
+    "courseName": "Agricultural Finance",
+    "courseNumber": 513,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Analysis of capital investments, interpretation of financial statements, capital structure considerations for agricultural firms, and farm real estate pricing.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 308 or AGEC 318 and ACCTG 231. Recommended prerequisite: AGEC 115.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning"]
+},
+{
+    "courseName": "Food and Agribusiness Marketing",
+    "courseNumber": 515,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "A broad view of marketing; food markets and consumption; marketing functions and institutions; prices, competition, and marketing costs; functional and organizational issues; food marketing regulations; commodity marketing.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 120 or AGEC 121 or ECON 120.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning"]
+},
+{
+    "courseName": "Agricultural Law and Economics",
+    "courseNumber": 516,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "The legal framework for decision making by farm firms, families, and individuals; liabilities, real and personal property, contracts, uniform commercial code, organization of farm firms, intergeneration property transfers, water law, fence law, federal and state regulatory power, insurance, income tax, and social security.",
+    "typicallyOffered": ["SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "ECON 110 or AGEC 120 or AGEC 121 or ECON 120 and junior standing.",
+        "corequisites": ""
+    },
+    "kstate8": ["Ethical Reasoning and Responsibility"]
+},
+{
+    "courseName": "Market Fundamentals and Futures/Options Trading",
+    "courseNumber": 520,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "This is an experiential course in the trading of commodity futures and options. Attention is focused on the study of market price determination, the implications of market efficiency notions, and on actual trading of futures and options. Students invest in a commodity educational trading fund. Class approves recommendations by vote, orders are placed with a broker, and the class monitors open trades. The pool balance at the end of the semester is redistributed to students.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 420.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Ethical Reasoning and Responsibility"]
+},
+{
+    "courseName": "Natural Resource and Environmental Economics",
+    "courseNumber": 525,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Emphasis on the application of demand, supply, and price concepts in the study of natural resource use, policies, and management. Interdependence between environmental quality and economic actions are examined through discussion of property rights, economic incentives, externalities, and economic components of environmental policies.",
+    "typicallyOffered": ["FALL"],
+    "uge": true,
+    "requisites": {
+        "prerequisites": "AGEC 120 or AGEC 121 or ECON 120 or ECON 110 and junior standing.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Social Sciences"]
+},
+{
+    "courseName": "Agricultural Sales",
+    "courseNumber": 535,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Agricultural Sales will introduce students to the role of sales and sales management in the agricultural industry.",
+    "typicallyOffered": [],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 318 or AGEC 515.",
+        "corequisites": ""
+    },
+    "kstate8": ["Ethical Reasoning and Responsibility", "Empirical and Quantitative Reasoning"]
+},
+{
+    "courseName": "Agricultural Economics and Agribusiness Seminar",
+    "courseNumber": 541,
+    "courseDepartment": "AGEC",
+    "credits": "1-18",
+    "description": "Seminars of special interest will be offered upon sufficient demand in selected areas relating to agricultural economics and agribusiness.",
+    "typicallyOffered": [],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Undergraduate Research in Agricultural Economics",
+    "courseNumber": 550,
+    "courseDepartment": "AGEC",
+    "credits": "0",
+    "description": "Mentored undergraduate research experience in agricultural economics and agribusiness.",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 120 or AGEC 121 or ECON 120, and consent of instructor.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Food Manufacturing, Distribution, and Retailing Economics",
+    "courseNumber": 570,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Advanced study of the economic and business aspects of the food industry from processing to distribution to retailing. Emerging trends in nutrition, food consumption, food safety and supply chain arrangements along with management and marketing issues in the food industry will be studied.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 318 or MANGT 420.",
+        "corequisites": ""
+    },
+    "kstate8": ["Ethical Reasoning and Responsibility", "Global Issues and Perspectives"]
+},
+{
+    "courseName": "Farm Management Strategies",
+    "courseNumber": 598,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "A study of management concepts, tools, and decision strategies applied to farm firms. Alternative measures of farm business performances, as well as planning and evaluation techniques for an uncertain environment, are examined.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 308, AGEC 500, and AGEC 513 or FINAN 450.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Social Sciences"]
+},
+{
+    "courseName": "Food and Agribusiness Management Strategies",
+    "courseNumber": 599,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "This course integrates the risk, production, marketing, and financial management strategies of agribusiness firms. Special attention is given to the application of economic theory and quantitative analysis to business decision-making processes. In addition to case studies, a variety of analytical techniques will focus on both markets and firms involved in the production and marketing of food commodities.",
+    "typicallyOffered": ["FALL", "SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 318, AGEC 500, and either AGEC 513 or FINAN 450. Recommended prerequisite: AGEC 515.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Global Issues and Perspectives"]
+},
+{
+    "courseName": "Price Analysis and Forecasting",
+    "courseNumber": 605,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "The analysis of selected agricultural prices; application of regression analysis to price analysis, the role of futures markets and market efficiency, optimal hedging strategies, commodity option pricing, and price forecasting.",
+    "typicallyOffered": ["SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "A course in statistics; AGEC 501; AGEC 505 or ECON 520.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Historical Perspectives"]
+},
+{
+    "courseName": "Current Agriculture and Natural Resource Policy Issues",
+    "courseNumber": 610,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Current issues in agricultural and natural resource policy from divergent perspectives. Classroom discussion, debate, writing assignments, and student presentations. Current events are analyzed and synthesized from both economic and noneconomic perspectives. Topics may include environmental issues, international agricultural development, the politics of farm programs, and the relationship between technology, agriculture, and society.",
+    "typicallyOffered": ["FALL"],
+    "uge": true,
+    "requisites": {
+        "prerequisites": "AGEC 505 and either AGEC 525 or AGEC 410.",
+        "corequisites": ""
+    },
+    "kstate8": ["Social Sciences"]
+},
+{
+    "courseName": "Global Agricultural and Economic Development",
+    "courseNumber": 615,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "This course covers contemporary challenges in global development, with an emphasis on agricultural issues. Students will analyze problems using economic models, and develop empirical skills by learning key data collection concepts, and working with survey data. Topics include poverty, technology adoption, agricultural policy, health, and program evaluation.",
+    "typicallyOffered": ["FALL"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 315 and AGEC 500.",
+        "corequisites": "AGEC 501."
+    },
+    "kstate8": ["Ethical Reasoning and Responsibility", "Global Issues and Perspectives"]
+},
+{
+    "courseName": "International Agricultural Trade",
+    "courseNumber": 623,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Applied economics of agricultural trade. Emphasis on why trade occurs, current agricultural trade patterns, the effects of agricultural policy on trade, and the institutions of trade.",
+    "typicallyOffered": ["FALL"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 505.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning", "Global Issues and Perspectives"]
+},
+{
+    "courseName": "Agribusiness Logistics",
+    "courseNumber": 632,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Planning for efficient use of transportation, storage and processing facilities in the handling of raw materials and products for agribusiness firms, controlling shipments and inventory in coordination with warehouse and handling operations, and scientific selection of routes, schedules, and equipment.",
+    "typicallyOffered": ["FALL"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 120 or AGEC 121 or ECON 120, and junior standing.",
+        "corequisites": ""
+    },
+    "kstate8": ["Global Issues and Perspectives", "Historical Perspectives"]
+},
+{
+    "courseName": "Agricultural Economics and Agribusiness Seminar",
+    "courseNumber": 641,
+    "courseDepartment": "AGEC",
+    "credits": "1-18",
+    "description": "Seminars of special interest will be offered upon sufficient demand in selected areas relating to agricultural economics and agribusinesses.",
+    "typicallyOffered": [],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Junior standing and instructor permission.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Risk Management",
+    "courseNumber": 680,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Analytical concepts and quantitative tools to make better decisions in risky situations. Identifying various types of risk an operation faces, measuring the degree of risk, and exploring ways to manage risk. Includes portfolio analysis, futures and options, contracting, and insurance. Emphasis on computer applications. Topics are focused on agriculture but are applicable to other industries and household decisions.",
+    "typicallyOffered": ["SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 420, AGEC 513 or FINAN 450, and a course in statistics.",
+        "corequisites": ""
+    },
+    "kstate8": ["Empirical and Quantitative Reasoning"]
+},
+{
+    "courseName": "Comparative Food and Agriculture Systems",
+    "courseNumber": 710,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "This course provides a comparative analysis of the business and economic situation of the food and agriculture sector around the world. The course will cover the European Union, the Former Soviet Union, MERCORSUR, and Southeast Asia, Oceania and possibly other regions. The course will focus briefly on the historical development, the current situation, and the future outlook of the food and agriculture sector. Upon completion of this course, students will be able to evaluate the comparative advantage of the United States in the production of food and fiber.",
+    "typicallyOffered": ["SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 120 or AGEC 121 or ECON 120.",
+        "corequisites": ""
+    },
+    "kstate8": ["Global Issues and Perspectives", "Historical Perspectives"]
+},
+{
+    "courseName": "Optimization Techniques for Agricultural Economics",
+    "courseNumber": 712,
+    "courseDepartment": "AGEC",
+    "credits": "3",
+    "description": "Application of optimization techniques including linear programming and nonlinear programming for research and decision analysis in agricultural economics.",
+    "typicallyOffered": ["SPRING"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "AGEC 500 and AGEC 501, or graduate standing.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Seminar in Agricultural Economics Analysis",
+    "courseNumber": 740,
+    "courseDepartment": "AGEC",
+    "credits": "1-18",
+    "description": "Seminar on methods of economic analysis.",
+    "typicallyOffered": ["On sufficient demand"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Consent of instructor.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Agricultural Economics and Agribusiness Problems",
+    "courseNumber": 750,
+    "courseDepartment": "AGEC",
+    "credits": "1-18",
+    "description": "",
+    "typicallyOffered": ["FALL", "SPRING", "SUMMER"],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Junior standing and consent of the instructor.",
+        "corequisites": ""
+    },
+    "kstate8": []
+},
+{
+    "courseName": "Risk Management Fellows Seminar",
+    "courseNumber": 751,
+    "courseDepartment": "AGEC",
+    "credits": "1",
+    "description": "This course serves as The Center for Risk Management Education and Research Student Fellows seminar course. Students will conduct a risk management research project.",
+    "typicallyOffered": [],
+    "uge": false,
+    "requisites": {
+        "prerequisites": "Junior standing, admitted to the Risk Management Fellows Program, and consent of the instructor.",
+        "corequisites": ""
+    },
+    "kstate8": []
+}
+]

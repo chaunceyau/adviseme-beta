@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Segment, Grid } from 'semantic-ui-react'
-// import HTML5Backend from 'react-dnd-html5-backend'
-// import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend'
+import { DragDropContext } from 'react-dnd'
 
 //
 import CourseSidebar from '../../components/plan/planner/sidebar/CourseSidebar'
@@ -27,5 +27,4 @@ class CoursePlanner extends Component {
   }
 }
 
-export default CoursePlanner
-// export default DragDropContext(HTML5Backend)(CoursePlanningPage);
+export default DragDropContext(HTML5Backend)(CoursePlanner)

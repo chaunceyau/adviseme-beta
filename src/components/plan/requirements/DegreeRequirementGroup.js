@@ -17,28 +17,36 @@ class DegreeRequirementGroup extends Component {
   }
 
   isRequirementComplete(requirement) {
-    const plannerCourseIDs = _.union(
-      this.props.academicUnits.reduce((acc, { course }) => {
-        for (const c of course) {
-          acc.push(c.id)
-        }
-        return acc
-      }, []),
-      this.props.unplannedCourses.reduce((acc, { id }) => {
-        acc.push(id)
-        return acc
-      }, [])
+    const plannerCourses = _.union(
+      this.props.academicUnits.reduce((acc, val) => acc.concat(val.courses), []),
+      this.props.unplannedCourses,
+      []
     )
-    const requirementCourseIDs = requirement.courseOptions.reduce((acc, { id }) => {
-      acc.push(id)
-      return acc
-    }, [])
-    return _.intersection(plannerCourseIDs, requirementCourseIDs).length > 0
+
+    const coursesSatisifyingRequirement = _.intersectionBy(plannerCourses, requirement.courseOptions, 'id')
+
+    switch (requirement.logicalOperator) {
+      case 'X_HOURS_OF':
+        const hoursComplete = coursesSatisifyingRequirement.reduce((acc, val) => val.credits + acc, 0)
+        return {
+          complete: hoursComplete >= requirement.numberOfX,
+          xComplete: hoursComplete
+        }
+      case 'X_OF':
+        const length = coursesSatisifyingRequirement.length
+        return {
+          complete: length >= requirement.numberOfX ? requirement.numberOfX : 0,
+          xComplete: length
+        }
+      default:
+        return false
+    }
   }
 
   render() {
     if (!(Array.isArray(this.props.requirements) && this.props.requirements.length))
       return <span>Degree requirements have no yet been uploaded for this requirement.</span>
+    // console.log(this.props.requirements)
     // make an array to map requirements with only categorical options from props
     let accordionRequirements = []
     // make an array to map requirements with only course options from props
@@ -53,7 +61,6 @@ class DegreeRequirementGroup extends Component {
         accordionRequirements.push(requirement)
       else segmentRequirements.push(requirement)
     })
-
     // check if props passed are accordion style requirements (categorical)
     if (Array.isArray(accordionRequirements) && accordionRequirements.length) {
       return (
@@ -70,11 +77,20 @@ class DegreeRequirementGroup extends Component {
                       {name}
                     </Grid.Column>
                     <Grid.Column textAlign="right">
-                      {0 === 1 ? <Icon name="check circle" color="green" /> : <Icon name="times circle" color="red" />}
+                      <span>
+                        Complete <b style={{ color: '#512888' }}>{requirement.logicalOperator === 'AND' ? 'ALL' : 'ONE'}</b> of the
+                        following requirements
+                      </span>
+                      {/* {0 === 1 ? <Icon name="check circle" color="green" /> : <Icon name="times circle" color="red" />} */}
                     </Grid.Column>
                   </Grid>
                 </Accordion.Title>,
                 <Accordion.Content key={id + 'content'} active={activeIndex === id}>
+                  {/* <Segment>
+                    <span>
+                      Please fill <b>{requirement.logicalOperator === 'AND' ? 'all' : 'one'}</b> of the following requirements
+                    </span>
+                  </Segment> */}
                   <DegreeRequirementGroup
                     key={id}
                     requirements={requirement.degreeProgramRequirementOptions}
@@ -103,20 +119,25 @@ class DegreeRequirementGroup extends Component {
         <Segment.Group>
           {segmentRequirements.map(requirement => {
             const { id, name } = requirement
+            const isReq = this.isRequirementComplete(requirement)
             return (
               <Segment key={requirement.id}>
-                <Grid columns={2}>
-                  <Grid.Column>
-                    <Link to={{ pathname: '/plan/requirements/options', state: { requirementGroupID: id } }}>{name}</Link>
-                  </Grid.Column>
-                  <Grid.Column textAlign="right">
-                    {this.isRequirementComplete(requirement) ? (
-                      <Icon name="check circle" color="green" />
-                    ) : (
-                      <Icon name="times circle" color="red" />
-                    )}
-                  </Grid.Column>
-                </Grid>
+                <Link to={{ pathname: '/plan/requirements/options', state: { requirementGroupID: id } }}>
+                  <Grid columns={2}>
+                    <Grid.Column>
+                      {isReq.complete ? <Icon name="check circle" color="green" /> : <Icon name="times circle" color="red" />}
+                      <span style={{ marginLeft: 7.5 }}>{name}</span>
+                    </Grid.Column>
+                    <Grid.Column textAlign="right">
+                      {requirement.numberOfX > 0 ? (
+                        <span>
+                          {isReq.xComplete} of {requirement.numberOfX} {requirement.logicalOperator === 'X_OF' ? 'courses' : 'hours'}{' '}
+                          selected
+                        </span>
+                      ) : null}
+                    </Grid.Column>
+                  </Grid>
+                </Link>
               </Segment>
             )
           })}

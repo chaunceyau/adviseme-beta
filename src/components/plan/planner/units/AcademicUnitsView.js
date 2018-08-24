@@ -92,7 +92,7 @@ class AcademicUnitsView extends Component {
         <Query query={GET_AVAILABLE_ACADEMIC_UNITS}>
           {({ loading, error, data }) => {
             if (loading) return <ContentLoading />
-            if (error) console.log(error)
+            if (error) return <span>error</span>
             if (data) {
               return this.renderRowsOfUnits(
                 this.props.academicUnits,

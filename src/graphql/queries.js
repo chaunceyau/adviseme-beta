@@ -18,12 +18,24 @@ export const GET_COURSE_OPTIONS_FOR_REQUIREMENT = gql`
     degreeProgramRequirement(where: { id: $id }) {
       id
       name
+      logicalOperator
+      numberOfX
       courseOptions {
         id
         name
+        credits
         number
         description
+        naming {
+          id
+          shortName
+          longName
+        }
         department {
+          id
+          name
+        }
+        degreeProgramRequirements {
           id
           name
         }
@@ -42,11 +54,18 @@ export const GET_REQUIREMENTS_FOR_DEGREE = gql`
         id
         name
         logicalOperator
+        numberOfX
+        # maybe remove l8r
+        courseOptions {
+          id
+          name
+        }
         # 1 level deep
         degreeProgramRequirementOptions {
           id
           name
           logicalOperator
+          numberOfX
           # 2 levels deep
           courseOptions {
             id
@@ -57,6 +76,7 @@ export const GET_REQUIREMENTS_FOR_DEGREE = gql`
             id
             name
             logicalOperator
+            numberOfX
             # 3 levels deep
             courseOptions {
               id
@@ -67,6 +87,22 @@ export const GET_REQUIREMENTS_FOR_DEGREE = gql`
               id
               name
               logicalOperator
+              numberOfX
+              courseOptions {
+                id
+                name
+              }
+              # 4 levels deep
+              degreeProgramRequirementOptions {
+                id
+                name
+                logicalOperator
+                numberOfX
+                courseOptions {
+                  id
+                  name
+                }
+              }
             }
           }
         }
@@ -82,6 +118,7 @@ export const GET_STUDENT_PLAN_INFORMATION = gql`
       unplannedCourses {
         id
         name
+        credits
       }
       studentAcademicUnits {
         id
@@ -89,6 +126,7 @@ export const GET_STUDENT_PLAN_INFORMATION = gql`
         courses {
           id
           name
+          credits
         }
       }
       # degree student is in

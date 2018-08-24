@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-
-import { Segment, Header, Button, Modal, Popup } from 'semantic-ui-react'
+import _ from 'lodash'
 import { Query } from 'react-apollo'
+import { Redirect } from 'react-router-dom'
+import { Segment, Header, Button, Modal, Popup, Grid, Label, Icon } from 'semantic-ui-react'
+
+//
 import { GET_COURSE_OPTIONS_FOR_REQUIREMENT } from '../../graphql/queries'
 import ContentLoading from '../ContentLoading'
-import { Redirect } from 'react-router-dom'
-import { store } from '../../store'
-import { addCourseToPlan } from '../../actions'
+import { isCourseInPlan, replaceUnderscoreWithSpace } from '../../util/Utilities'
 
 /**
  * View containing all of the course options for an individual requirement
@@ -18,13 +19,15 @@ class CourseOptions extends Component {
    */
   render() {
     if (!this.props.location.state || !this.props.location.state.requirementGroupID) return <Redirect to="/plan/requirements" />
+    //
     return (
       <Query query={GET_COURSE_OPTIONS_FOR_REQUIREMENT} variables={{ id: this.props.location.state.requirementGroupID }}>
-        {({ loading, error, data: { degreeProgramRequirement } }) => {
+        {({ loading, error, data }) => {
           if (loading) return <ContentLoading />
           if (error) return <span>error</span>
-          if (degreeProgramRequirement) {
-            const { name, courseOptions } = degreeProgramRequirement
+          if (data) {
+            const { degreeProgramRequirement } = data
+            const { name, courseOptions, logicalOperator, numberOfX } = degreeProgramRequirement
             // if no options exist, inform user
             if (!courseOptions.length)
               return (
@@ -33,23 +36,52 @@ class CourseOptions extends Component {
                 </Segment>
               )
 
-            // if options exist, group them by department
-            const groupedCourseOptions = courseOptions.reduce((acc, val) => {
-              acc[val.department.name] = acc[val.department.name] || []
-              acc[val.department.name].push(val)
-              return acc
-            }, {})
+            // if options exist, group them by group
+
+            const sortedCourseOptions = _.chain(courseOptions)
+              .groupBy('naming.longName')
+              .map((key, value) => {
+                return { group: value, courses: key }
+              })
+              .value()
+              .sort((a, b) => a.group.localeCompare(b.group))
 
             // render options
             return (
-              <Segment>
-                Course Options for&nbsp;
-                <b>{name}</b>
-                <br />
-                {Object.entries(groupedCourseOptions).map(entry => (
-                  <CourseCategory key={entry[0]} entry={entry} currentStudentID={'0'} />
-                ))}
-              </Segment>
+              <React.Fragment>
+                <Header attached="top">
+                  <Grid>
+                    <Grid.Row columns={2}>
+                      <Grid.Column>
+                        <span>{name}</span>
+                      </Grid.Column>
+                      <Grid.Column textAlign="right">
+                        <span style={{ fontWeight: 400 }}>
+                          Select&nbsp;
+                          <b>
+                            {numberOfX} {logicalOperator === 'X_OF' ? 'course' : 'credit hour'}
+                          </b>
+                          {numberOfX > 1 ? 's' : null} from the list below.
+                        </span>
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
+                </Header>
+                <Segment attached="bottom">
+                  {logicalOperator === 'X_HOURS_OF' ? '' : null}
+                  {sortedCourseOptions.map(entry => {
+                    return (
+                      <CourseCategory
+                        key={entry.group}
+                        name={entry.group}
+                        courses={entry.courses}
+                        addCourseToUnplannedCourses={this.props.addCourseToUnplannedCourses}
+                        removeCourseFromPlan={this.props.removeCourseFromPlan}
+                      />
+                    )
+                  })}
+                </Segment>
+              </React.Fragment>
             )
           }
         }}
@@ -64,15 +96,22 @@ class CourseCategory extends Component {
   }
 
   render() {
-    const { entry } = this.props
+    const { name, courses } = this.props
     return (
       <React.Fragment>
         <Header as="h5" attached="top">
-          {entry[0]}
+          {replaceUnderscoreWithSpace(name)}
         </Header>
-        <Segment attached>
-          {entry[1].map(course => {
-            return <Course course={course} key={course.id} />
+        <Segment attached="bottom">
+          {courses.map(course => {
+            return (
+              <Course
+                course={course}
+                key={course.id}
+                addCourseToUnplannedCourses={this.props.addCourseToUnplannedCourses}
+                removeCourseFromPlan={this.props.removeCourseFromPlan}
+              />
+            )
           })}
         </Segment>
       </React.Fragment>
@@ -86,41 +125,85 @@ class Course extends Component {
     redirect: false
   }
 
-  handleClick = id => this.setState({ open: !this.state.open })
+  handleClick = () => this.setState({ open: !this.state.open })
 
-  handleClose = () => this.setState({ open: !this.state.open })
+  handleClose = () => this.setState({ open: false })
 
   render() {
-    const { id, number, name, description, department } = this.props.course
+    const { id, number, name, description, naming, credits, degreeProgramRequirements } = this.props.course
+    const multiReqBool = degreeProgramRequirements.length > 1
     if (this.state.redirect) return <Redirect to="/plan/requirements/" />
 
+    const courseInPlan = isCourseInPlan(this.props.course)
     return (
       <React.Fragment>
         <Popup
           trigger={
-            <Button key={id + 'btn'} onClick={() => this.handleClick(id)}>
-              {department.name} {number}
-            </Button>
+            multiReqBool ? (
+              <Button
+                as="div"
+                labelPosition="right"
+                onClick={() => this.handleClick(id)}
+                style={{ marginBottom: 10, marginRight: 10 }}
+              >
+                <Button icon>
+                  <Icon name="star" />
+                </Button>
+                <Label as="a" basic>
+                  {naming.shortName} {number}
+                </Label>
+              </Button>
+            ) : (
+              <Button as="div" onClick={() => this.handleClick(id)} style={{ marginBottom: 10, marginRight: 10 }}>
+                {naming.shortName} {number}
+              </Button>
+            )
           }
           content={name}
         />
         <Modal size={'small'} key={id} onClose={this.handleClose} open={this.state.open}>
           <Modal.Header>
-            {department.name} {number} {name}
+            {naming.shortName} {number}: {name}
           </Modal.Header>
-          <Modal.Content>{description}</Modal.Content>
+          <Modal.Content>
+            <b>Description:</b>
+            &nbsp;
+            {description}
+            <br />
+            <b>Credit Hours:</b>
+            &nbsp;
+            {credits}
+            <br />
+            <b>Degree Requirements:</b>
+            &nbsp;
+            {degreeProgramRequirements.map(({ name }) => (
+              <span key={name}>{name} </span>
+            ))}
+          </Modal.Content>
 
           <Modal.Actions>
             <Button onClick={this.handleClose}>Close</Button>
-            <Button
-              positive
-              onClick={() => {
-                store.dispatch(addCourseToPlan(this.props.course))
-                this.setState({ redirect: true, open: false })
-              }}
-            >
-              Add Course
-            </Button>
+            {courseInPlan ? (
+              <Button
+                negative
+                onClick={() => {
+                  this.props.removeCourseFromPlan(this.props.course)
+                  this.setState({ redirect: true, open: false })
+                }}
+              >
+                Remove Course
+              </Button>
+            ) : (
+              <Button
+                positive
+                onClick={() => {
+                  this.props.addCourseToUnplannedCourses(this.props.course)
+                  this.setState({ redirect: true, open: false })
+                }}
+              >
+                Add Course
+              </Button>
+            )}
           </Modal.Actions>
         </Modal>
       </React.Fragment>

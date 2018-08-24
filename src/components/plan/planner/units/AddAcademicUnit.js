@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Icon, Modal, Button } from 'semantic-ui-react'
 //
-import { store } from '../../../../store'
-import { addAcademicUnit, addCourseToPlan } from '../../../../actions'
 import { replaceUnderscoreWithSpace } from '../../../../util/Utilities'
 
 export default class AddAcademicUnit extends Component {

@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import { store } from '../../store'
-import { setAcademicUnits } from '../../actions'
 class Header extends Component {
   constructor(props) {
     super(props)

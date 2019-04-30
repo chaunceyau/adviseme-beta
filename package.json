@@ -26,6 +26,7 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.10.0",
     "redux-promise-middleware": "^5.1.1",
+    "redux-immutable-state-invariant": "^2.1.0",
     "redux-thunk": "^2.3.0",
     "semantic-ui-react": "^0.81.1"
   },
@@ -34,8 +35,5 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "redux-immutable-state-invariant": "^2.1.0"
   }
 }

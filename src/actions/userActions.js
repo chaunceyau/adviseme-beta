@@ -7,6 +7,14 @@ export function test123() {
   }
 }
 
+export function setAvailableAcademicUnits(units) {
+  console.log(units)
+  return {
+    type: ActionTypes.SET_AVAILABLE_ACADEMIC_UNITS,
+    payload: units
+  }
+}
+
 /**
  *
  * @param {*} ids
@@ -116,29 +124,5 @@ export function removeCourseFromPlan(course) {
 export function clearNotification() {
   return {
     type: ActionTypes.CLEAR_NOTIFICATION
-  }
-}
-
-//\\\\\\///////\\\\///\\\\\\///\\\\////\\\\\\
-
-/**
- *
- * @param {*} courses
- */
-export function setUnplannedCourses(courses) {
-  return {
-    type: ActionTypes.SET_UNPLANNED_COURSES,
-    payload: courses
-  }
-}
-
-/**
- *
- * @param {*} academicUnits
- */
-export function setAcademicUnits(academicUnits) {
-  return {
-    type: ActionTypes.SET_ACADEMIC_UNITS,
-    payload: academicUnits
   }
 }

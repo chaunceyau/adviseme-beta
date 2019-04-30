@@ -7,7 +7,8 @@ export default function reducer(
     unplannedCourses: [],
     academicUnits: [],
     degreePrograms: [],
-    notification: {}
+    availableUnits: [],
+    notification: null
   },
   action
 ) {
@@ -17,7 +18,7 @@ export default function reducer(
         unplannedCourses: [],
         academicUnits: [],
         degreePrograms: [],
-        notification: {}
+        notification: null
       }
     // add course to plan
     case ActionTypes.ADD_COURSE_TO_UNPLANNED_COURSES: {
@@ -26,7 +27,8 @@ export default function reducer(
           ...state,
           notification: {
             title: `This course is already in your plan.`,
-            content: `${action.payload.name} has already been added to your plan. Please select a different course.`
+            content: `${action.payload.name} has already been added to your plan. Please select a different course.`,
+            postive: false
           }
         }
       return {
@@ -42,17 +44,23 @@ export default function reducer(
 
     // Remove course from sidebar
     case ActionTypes.REMOVE_COURSE_FROM_UNPLANNED_COURSES:
+      console.log('remove from unplanned added ->')
+      const newnew = state.unplannedCourses.filter(course => course.id !== action.payload.course.id)
       return {
         ...state,
-        unplannedCourses: state.unplannedCourses.filter(course => course.id !== action.payload.course.id)
+        unplannedCourses: newnew
       }
 
     // Add course to specific academic unit
     case ActionTypes.ADD_COURSE_TO_ACADEMIC_UNIT:
+      console.log('add to plan added ->')
+      console.log('​action.payload.unitName', action.payload.unitName)
+      console.log('​state.academicUnits', state.academicUnits)
+
       return {
         ...state,
         academicUnits: updateItemInArrayByName(state.academicUnits, action.payload.unitName, unit => {
-          return { ...unit, courses: unit.courses.concat(action.payload.course) }
+          return { ...unit, courses: [...unit.courses, action.payload.course] }
         }),
         unplannedCourses: state.unplannedCourses.filter(course => course.id !== action.payload.course.id)
       }
@@ -94,9 +102,18 @@ export default function reducer(
 
     // Add new academic unit to plan
     case ActionTypes.ADD_ACADEMIC_UNIT:
+      console.log('​action.payload', action.payload)
+      console.log('state.payload', state.academicUnits)
+      console.log('state.update', [...state.academicUnits, action.payload])
+      const tempUnits = [...state.academicUnits, action.payload]
+      console.log('tesltsl', state.availableUnits)
+      tempUnits
+        .sort((a, b) => state.availableUnits.indexOf(a.name) - state.availableUnits.indexOf(b.name))
+        .map(u => ({ name: u, courses: [] }))
+      console.log(tempUnits)
       return {
         ...state,
-        academicUnits: [...state.academicUnits, action.payload]
+        academicUnits: tempUnits
       }
 
     case ActionTypes.SET_DEGREE_PROGRAMS:
@@ -109,6 +126,12 @@ export default function reducer(
       return {
         ...state,
         notification: null
+      }
+
+    case ActionTypes.SET_AVAILABLE_ACADEMIC_UNITS:
+      return {
+        ...state,
+        availableUnits: action.payload
       }
 
     default:

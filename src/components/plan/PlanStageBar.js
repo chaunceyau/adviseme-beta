@@ -25,24 +25,8 @@ class PlanStageBar extends Component {
         >
           <Icon name="student" />
           <Step.Content>
-            <Step.Title>Major Selection</Step.Title>
+            <Step.Title>Degree Selection</Step.Title>
             <Step.Description>Select your degree programs</Step.Description>
-          </Step.Content>
-        </Step>
-
-        <Step
-          name="previous"
-          active={path.startsWith(urls.plan.completed)}
-          disabled={!this.props.degreeSelected}
-          onClick={this.handleItemClick}
-          as={Link}
-          to={urls.plan.completed}
-          disabled={this.props.disable}
-        >
-          <Icon name="history" />
-          <Step.Content>
-            <Step.Title>Completed Courses</Step.Title>
-            <Step.Description>Select completed coursework</Step.Description>
           </Step.Content>
         </Step>
 
@@ -87,3 +71,19 @@ const mapStateToProps = store => ({
 })
 
 export default connect(mapStateToProps)(PlanStageBar)
+
+        // <Step
+        //   name="previous"
+        //   active={path.startsWith(urls.plan.completed)}
+        //   disabled={!this.props.degreeSelected}
+        //   onClick={this.handleItemClick}
+        //   as={Link}
+        //   to={urls.plan.completed}
+        //   disabled={this.props.disable}
+        // >
+        //   <Icon name="history" />
+        //   <Step.Content>
+        //     <Step.Title>Completed Courses</Step.Title>
+        //     <Step.Description>Select completed coursework</Step.Description>
+        //   </Step.Content>
+        // </Step>

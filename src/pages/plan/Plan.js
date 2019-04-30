@@ -7,13 +7,11 @@ import CourseOptions from './CourseOptions'
 import DegreeRequirements from './DegreeRequirements'
 import CoursePlanner from './CoursePlanner'
 import PlanStageBar from '../../components/plan/PlanStageBar'
-import faker from 'faker'
 
-import { setDegreePrograms, clearNotification, removeCourseFromPlan, addCourseToUnplannedCourses } from '../../actions'
-import MajorSelection from './MajorSelection'
+import { setDegreePrograms, clearNotification, removeCourseFromUnplannedCourses, addCourseToUnplannedCourses } from '../../actions'
+import DegreeSelection from './DegreeSelection'
 import { urls } from '../../util/Constants'
 import CompletedCoursework from './CompletedCoursework'
-import AddNewCourses from './AddNewCourses'
 
 class Plan extends Component {
   render() {
@@ -27,7 +25,7 @@ class Plan extends Component {
           <Route
             path={urls.plan.degrees}
             render={() => (
-              <MajorSelection
+              <DegreeSelection
                 degreePrograms={this.props.degreePrograms}
                 setDegreePrograms={this.props.setDegreePrograms}
                 {...this.props}
@@ -54,7 +52,7 @@ class Plan extends Component {
             render={() => {
               return (
                 <CourseOptions
-                  removeCourseFromPlan={this.props.removeCourseFromPlan}
+                  removeCourseFromUnplannedCourses={this.props.removeCourseFromUnplannedCourses}
                   addCourseToUnplannedCourses={this.props.addCourseToUnplannedCourses}
                   {...this.props}
                 />
@@ -75,7 +73,7 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = {
   setDegreePrograms,
   clearNotification,
-  removeCourseFromPlan,
+  removeCourseFromUnplannedCourses,
   addCourseToUnplannedCourses
 }
 

@@ -1,0 +1,2 @@
+endpoint: https://advisemebetaserver.herokuapp.com/advisemeserver/dev
+datamodel: datamodel.graphql

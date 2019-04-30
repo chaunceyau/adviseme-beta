@@ -8,7 +8,7 @@ import { Query } from 'react-apollo'
 import AcademicUnit from './AcademicUnit'
 import ContentLoading from '../../../../pages/ContentLoading'
 import AddAcademicUnit from './AddAcademicUnit'
-import { addAcademicUnit } from '../../../../actions'
+import { addAcademicUnit, setAvailableAcademicUnits } from '../../../../actions'
 import { GET_AVAILABLE_ACADEMIC_UNITS } from '../../../../graphql/queries'
 
 /**
@@ -32,13 +32,15 @@ class AcademicUnitsView extends Component {
       )
     let columns = []
 
-    academicUnits.sort((a, b) => availableUnits.indexOf(a.name) - availableUnits.indexOf(b.name)).map(academicUnit => {
-      return columns.push(
-        <Grid.Column key={academicUnit.name}>
-          <AcademicUnit courses={academicUnit.courses} name={academicUnit.name} />
-        </Grid.Column>
-      )
-    })
+    academicUnits
+      .sort((a, b) => availableUnits.indexOf(a.name) - availableUnits.indexOf(b.name))
+      .map(academicUnit => {
+        return columns.push(
+          <Grid.Column key={academicUnit.name}>
+            <AcademicUnit courses={academicUnit.courses} name={academicUnit.name} />
+          </Grid.Column>
+        )
+      })
 
     // TODO: REWRITE THIS METHOD PROBABLY
     // divide in to chunks of threes for the mapping
@@ -86,7 +88,6 @@ class AcademicUnitsView extends Component {
    *
    */
   render() {
-    // TODO: MIGHT NOT NEED 65vh maxheight after remove testbar
     return (
       <Grid doubling columns={3} stackable>
         <Query query={GET_AVAILABLE_ACADEMIC_UNITS}>
@@ -94,13 +95,12 @@ class AcademicUnitsView extends Component {
             if (loading) return <ContentLoading />
             if (error) return <span>error</span>
             if (data) {
-              return this.renderRowsOfUnits(
-                this.props.academicUnits,
-                data.__type.enumValues.reduce((acc, { name }) => {
-                  acc.push(name)
-                  return acc
-                }, [])
-              )
+              const availableUnits = data.__type.enumValues.reduce((acc, { name }) => {
+                acc.push(name)
+                return acc
+              }, [])
+              this.props.setAvailableAcademicUnits(availableUnits)
+              return this.renderRowsOfUnits(this.props.academicUnits, availableUnits)
             }
           }}
         </Query>
@@ -115,5 +115,5 @@ const mapStateToProps = store => ({
 
 export default connect(
   mapStateToProps,
-  { addAcademicUnit }
+  { addAcademicUnit, setAvailableAcademicUnits }
 )(AcademicUnitsView)

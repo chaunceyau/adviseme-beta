@@ -7,8 +7,6 @@ import { DropTarget } from 'react-dnd'
 import PlannerCourse from '../sidebar/PlannerCourse'
 import { replaceUnderscoreWithSpace } from '../../../../util/Utilities'
 import { ItemTypes } from '../../../../util/Constants'
-import { store } from '../../../../store'
-import { addCourseToAcademicUnit } from '../../../../actions'
 
 /**
  * Specifies the drop target contract.
@@ -18,6 +16,24 @@ const academicUnitTarget = {
   canDrop(props, monitor) {
     // You can disallow drop based on props or item
     // const item = monitor.getItem()
+
+    const { prerequisiteGroups } = monitor.getItem()
+
+    if (Array.isArray(prerequisiteGroups) && prerequisiteGroups.length > 0) {
+      const prereqs = prerequisiteGroups.map(group => {
+        let course_ids = []
+        //
+        const { courseOptions, prerequisiteGroupOptions } = group
+        //
+        courseOptions.map(course => course_ids.push(course.id))
+        prerequisiteGroupOptions.map(group => {})
+        //
+        if (prerequisiteGroupOptions.length > 0) {
+        }
+      })
+    }
+    // console.log(props)
+    // console.log('dropPROPS : ' + JSON.stringify(props))
     return true
   },
 

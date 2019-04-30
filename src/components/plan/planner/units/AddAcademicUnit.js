@@ -41,7 +41,7 @@ export default class AddAcademicUnit extends Component {
               <Button
                 key={unit}
                 style={{ marginTop: 10, marginRight: 10 }}
-                disabled={this.props.academicUnits.some(u => u.name === unit)}
+                disabled={this.props.academicUnits.some(existingUnits => existingUnits.name === unit)}
                 onClick={() => {
                   this.props.addAcademicUnit({ name: unit, courses: [] })
                   this.setState({ open: false })

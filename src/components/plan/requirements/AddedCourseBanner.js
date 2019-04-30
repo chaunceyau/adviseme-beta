@@ -9,7 +9,7 @@ class AddedCourseBanner extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      courseName: "ART 100",
+      courseName: "",
       success: true,
       visible: true
     };

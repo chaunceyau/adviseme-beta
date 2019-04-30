@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import _ from 'lodash'
 import { Query } from 'react-apollo'
 import { Redirect } from 'react-router-dom'
-import { Segment, Header, Button, Modal, Popup, Grid, Label, Icon } from 'semantic-ui-react'
+import { Segment, Header, Button, Modal, Popup, Grid, Label, Icon, Divider, Card } from 'semantic-ui-react'
 
 //
 import { GET_COURSE_OPTIONS_FOR_REQUIREMENT } from '../../graphql/queries'
 import ContentLoading from '../ContentLoading'
 import { isCourseInPlan, replaceUnderscoreWithSpace } from '../../util/Utilities'
+import OptionsLegend from '../../components/plan/requirements/OptionsLegend'
 
 /**
  * View containing all of the course options for an individual requirement
@@ -49,6 +50,8 @@ class CourseOptions extends Component {
             // render options
             return (
               <React.Fragment>
+                <OptionsLegend />
+
                 <Header attached="top">
                   <Grid>
                     <Grid.Row columns={2}>
@@ -60,14 +63,16 @@ class CourseOptions extends Component {
                           Select&nbsp;
                           <b>
                             {numberOfX} {logicalOperator === 'X_OF' ? 'course' : 'credit hour'}
-                          </b>
-                          {numberOfX > 1 ? 's' : null} from the list below.
+                            {numberOfX > 1 ? 's' : null}
+                          </b>&nbsp;
+                          from the available options below.
                         </span>
                       </Grid.Column>
                     </Grid.Row>
                   </Grid>
                 </Header>
                 <Segment attached="bottom">
+                  {/* <OptionsLegend /> */}
                   {logicalOperator === 'X_HOURS_OF' ? '' : null}
                   {sortedCourseOptions.map(entry => {
                     return (
@@ -76,7 +81,7 @@ class CourseOptions extends Component {
                         name={entry.group}
                         courses={entry.courses}
                         addCourseToUnplannedCourses={this.props.addCourseToUnplannedCourses}
-                        removeCourseFromPlan={this.props.removeCourseFromPlan}
+                        removeCourseFromUnplannedCourses={this.props.removeCourseFromUnplannedCourses}
                       />
                     )
                   })}
@@ -97,19 +102,20 @@ class CourseCategory extends Component {
 
   render() {
     const { name, courses } = this.props
+    const orderedCourses = courses.sort((a, b) => a.number - b.number)
     return (
       <React.Fragment>
         <Header as="h5" attached="top">
           {replaceUnderscoreWithSpace(name)}
         </Header>
         <Segment attached="bottom">
-          {courses.map(course => {
+          {orderedCourses.map(course => {
             return (
               <Course
                 course={course}
                 key={course.id}
                 addCourseToUnplannedCourses={this.props.addCourseToUnplannedCourses}
-                removeCourseFromPlan={this.props.removeCourseFromPlan}
+                removeCourseFromUnplannedCourses={this.props.removeCourseFromUnplannedCourses}
               />
             )
           })}
@@ -133,7 +139,7 @@ class Course extends Component {
     const { id, number, name, description, naming, credits, degreeProgramRequirements } = this.props.course
     const multiReqBool = degreeProgramRequirements.length > 1
     if (this.state.redirect) return <Redirect to="/plan/requirements/" />
-
+    // const strings = ['tasks', 'heart', 'trophy']
     const courseInPlan = isCourseInPlan(this.props.course)
     return (
       <React.Fragment>
@@ -147,38 +153,99 @@ class Course extends Component {
                 style={{ marginBottom: 10, marginRight: 10 }}
               >
                 <Button icon>
-                  <Icon name="star" />
+                  <Icon name="tasks" />
                 </Button>
                 <Label as="a" basic>
-                  {naming.shortName} {number}
+                  {/* {naming.shortName} {number} */}
+                  {name}
                 </Label>
               </Button>
             ) : (
-              <Button as="div" onClick={() => this.handleClick(id)} style={{ marginBottom: 10, marginRight: 10 }}>
-                {naming.shortName} {number}
+              <Button
+                as="div"
+                // TODO: getting error in console b/c of no color: ''
+                color={courseInPlan ? 'violet' : ''}
+                onClick={() => this.handleClick(id)}
+                style={{ marginBottom: 10, marginRight: 10 }}
+              >
+                {/* {naming.shortName} {number}  */}
+                {name}
               </Button>
             )
           }
-          content={name}
+          content={naming.shortName + ' ' + number}
         />
         <Modal size={'small'} key={id} onClose={this.handleClose} open={this.state.open}>
           <Modal.Header>
-            {naming.shortName} {number}: {name}
+            <Grid>
+              <Grid.Row>
+                <Grid.Column textAlign="center">
+                  {naming.shortName} {number}: {name}
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Modal.Header>
-          <Modal.Content>
-            <b>Description:</b>
-            &nbsp;
+          {/* <Modal.Content>
+            <b>Description</b>
+            <br />
             {description}
             <br />
-            <b>Credit Hours:</b>
-            &nbsp;
+            <Divider/>
+            <b>Credit Hours</b>
+            <br />
             {credits}
             <br />
-            <b>Degree Requirements:</b>
-            &nbsp;
+            <Divider/>
+            <b>Degree Requirements</b>
+            <br />
             {degreeProgramRequirements.map(({ name }) => (
               <span key={name}>{name} </span>
             ))}
+          </Modal.Content> */}
+          <Modal.Content>
+            <Grid>
+              <Grid.Row>
+                <Grid.Column textAlign="center">
+                  <h3>Course Information</h3>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column>
+                  <Card fluid>
+                    <Card.Content header="Description" />
+                    <Card.Content description={description} />
+                  </Card>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column>
+                  <Card fluid>
+                    <Card.Content header="Credit Hours" />
+                    <Card.Content description={credits} />
+                  </Card>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column>
+                  <Card fluid>
+                    <Card.Content header="Requirements Filled" />
+                    <Card.Content
+                      description={degreeProgramRequirements.map(({ name }) => (
+                        <span key={name}>{name} </span>
+                      ))}
+                    />
+                  </Card>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column>
+                  <Card fluid>
+                    <Card.Content header="Prerequisites" />
+                    <Card.Content description={'coming soon'} />
+                  </Card>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Modal.Content>
 
           <Modal.Actions>
@@ -187,7 +254,7 @@ class Course extends Component {
               <Button
                 negative
                 onClick={() => {
-                  this.props.removeCourseFromPlan(this.props.course)
+                  this.props.removeCourseFromUnplannedCourses(this.props.course)
                   this.setState({ redirect: true, open: false })
                 }}
               >

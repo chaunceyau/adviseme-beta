@@ -1,0 +1,227 @@
+# projectId: cjjpxah2l102u0189cbdxckg4
+# version: 119
+
+type File @model {
+  contentType: String!
+  createdAt: DateTime!
+  id: ID! @unique
+  name: String!
+  secret: String! @unique
+  size: Int!
+  updatedAt: DateTime!
+  url: String! @unique
+}
+
+type User @model {
+  createdAt: DateTime!
+  id: ID! @unique
+  updatedAt: DateTime!
+  degreePrograms: [DegreeProgram!]! @relation(name: "UserOnDegreeProgram")
+  name: String!
+  studentAcademicUnits: [StudentAcademicUnit!]! @relation(name: "StudentAcademicUnitsOnUser")
+  unplannedCourses: [Course!]! @relation(name: "UserOnCourse")
+  userType: UserType
+}
+
+type Course @model {
+  id: ID! @unique
+  name: String!
+  number: Int
+  uge: Boolean
+  credits: String
+  corequisiteString: String
+  prerequisiteString: String
+  users: [User!]! @relation(name: "UserOnCourse")
+  naming: CourseNaming @relation(name: "CourseOnCourseNaming")
+  department: Department @relation(name: "DepartmentOnCourse")
+  description: String! @default(value: "This course has no description.")
+  typicalOffering: [TypicalAcademicUnits]
+  prerequisiteGroup: PrerequisiteGroup @relation(name: "CourseOnPrerequisiteGroup")
+  prerequisiteGroups: [PrerequisiteGroup!]! @relation(name: "PrerequisiteGroupOnCourse")
+  degreeProgramRequirements: [DegreeProgramRequirement!]! @relation(name: "DegreeProgramRequirementOnCourse")
+  studentAcademicUnits: [StudentAcademicUnit!]! @relation(name: "StudentAcademicUnitsOnCourse")
+}
+
+type DegreeProgram @model {
+  degreeProgramRequirements: [DegreeProgramRequirement!]! @relation(name: "DegreeProgramsOnDegreeProgramRequirement")
+  id: ID! @unique
+  name: DegreePrograms
+  users: [User!]! @relation(name: "UserOnDegreeProgram")
+}
+
+type DegreeProgramRequirement @model {
+  id: ID! @unique
+  name: String!
+  logicalOperator: LogicalOperator!
+  numberOfX: Int
+  courseOptions: [Course!]! @relation(name: "DegreeProgramRequirementOnCourse")
+  degreeProgramRequirementOptions: [DegreeProgramRequirement!]! @relation(name: "DegreeProgramRequirementOnDegreeProgramRequirement")
+  parentDegreeProgramRequirement: DegreeProgramRequirement @relation(name: "DegreeProgramRequirementOnDegreeProgramRequirement")
+  parentDegreePrograms: [DegreeProgram!]! @relation(name: "DegreeProgramsOnDegreeProgramRequirement")
+}
+
+type PrerequisiteGroup @model {
+  courseOptions: [Course!]! @relation(name: "PrerequisiteGroupOnCourse")
+  id: ID! @unique
+  logicalOperator: LogicalOperator
+  parentCourse: Course @relation(name: "CourseOnPrerequisiteGroup")
+  prerequisiteGroupName: String
+  prerequisiteGroupOptions: [PrerequisiteGroup!]! @relation(name: "PrerequisiteGroupOnPrerequisiteGroup")
+  prerequisiteGroupParent: PrerequisiteGroup @relation(name: "PrerequisiteGroupOnPrerequisiteGroup")
+  tempID: String
+}
+
+type StudentAcademicUnit @model {
+  id: ID! @unique
+  academicUnit: AcademicUnits!
+  courses: [Course!]! @relation(name: "StudentAcademicUnitsOnCourse")
+  user: User @relation(name: "StudentAcademicUnitsOnUser")
+}
+
+type College @model {
+  departments: [Department!]! @relation(name: "DepartmentWithinCollege")
+  id: ID! @unique
+  name: Colleges!
+}
+
+type Department @model {
+  college: College @relation(name: "DepartmentWithinCollege")
+  courses: [Course!]! @relation(name: "DepartmentOnCourse")
+  id: ID! @unique
+  name: DepartmentNames!
+}
+
+type StudentUnplannedCourses @model {
+  id: ID! @unique
+}
+
+type CourseNaming @model {
+  id: ID! @unique
+  shortName: String!
+  longName: String!
+  courses: [Course!]! @relation(name: "CourseOnCourseNaming")
+}
+
+enum AcademicUnits {
+  FALL_2018
+  SPRING_2019
+  SUMMER_2019
+  FALL_2019
+  SPRING_2020
+  SUMMER_2020
+  FALL_2020
+  SPRING_2021
+  SUMMER_2021
+  FALL_2021
+  SPRING_2022
+  SUMMER_2022
+  FALL_2022
+  SPRING_2023
+  SUMMER_2023
+}
+
+enum TypicalAcademicUnits {
+  FALL
+  SPRING
+  SUMMER
+}
+
+enum LogicalOperator {
+  NONE
+  OR
+  AND
+  X_OF
+  X_HOURS_OF
+}
+
+enum DegreePrograms {
+  ACCOUNTING
+  FINANCE
+  MANAGEMENT
+  MARKETING
+  ENTREPRENEURSHIP
+  MANAGEMENT_INFORMATION_SYSTEMS
+  PROFESSIONAL_STRATEGIC_SELLING
+}
+
+enum Colleges {
+  AGRICULTURE
+  ARCHITECTURE
+  ARTS_AND_SCIENCES
+  BUSINESS_ADMINISTRATION
+  EDUCATION
+  ENGINEERING
+  HUMAN_ECOLOGY
+  VET_MEDICINE
+}
+
+enum DepartmentNames {
+  AGRICULTURAL_ECONOMICS
+  AGRONOMY
+  ANIMAL_SCIENCES_AND_INDUSTRY
+  COMMUNICATIONS_AND_AGRICULTURAL_EDUCATION
+  AGRICULTURAL_EDUCATION
+  ENTOMOLOGY
+  FOOD_SCIENCE_INSTITUTE
+  GRAIN_SCIENCE_AND_INDUSTRY
+  HORTICULTURE_AND_NATURAL_RESOURCES
+  PLANT_PATHOLOGY
+  ARCHITECTURE
+  INTERIOR_ARCHITECTURE_AND_PRODUCT_DESIGN
+  LANDSCAPE_ARCHITECTURE_REGIONAL_AND_COMMUNITY_PLANNING
+  AEROSPACE_STUDIES_AIR_FORCE_ROTC
+  AMERICAN_ETHNIC_STUDIES
+  ART
+  BIOCHEMISTRY_AND_MOLECULAR_BIOPHYSICS
+  BIOLOGY
+  CHEMISTRY
+  COMMUNICATION_STUDIES
+  ECONOMICS
+  ENGLISH
+  GENDER_WOMEN_AND_SEXUALITY_STUDIES
+  GEOGRAPHY
+  GEOLOGY
+  HISTORY
+  JOURNALISM_AND_MASS_COMMUNICATIONS
+  MATHEMATICS
+  MILITARY_SCIENCE_ARMY_ROTC
+  MODERN_LANGUAGES
+  MUSIC_AND_THEATRE
+  PHILOSOPHY
+  PHYSICS
+  POLITICAL_SCIENCE
+  PSYCHOLOGICAL_SCIENCES
+  SOCIOLOGY
+  STATISTICS
+  ACCOUNTING
+  FINANCE
+  MANAGEMENT
+  MARKETING
+  CURRICULUM_AND_INSTRUCTION
+  EDUCATIONAL_LEADERSHIP
+  SPECIAL_EDUCATION
+  ARCHITECTURAL_ENGINEERING_AND_CONSTRUCTION_SCIENCE
+  BIOLOGICAL_AND_AGRICULTURAL_ENGINEERING
+  CHEMICAL_ENGINEERING
+  CIVIL_ENGINEERING
+  COMPUTER_SCIENCE
+  ELECTRICAL_AND_COMPUTER_ENGINEERING
+  INDUSTRIAL_AND_MANUFACTURING_SYSTEMS_ENGINEERING
+  MECHANICAL_AND_NUCLEAR_ENGINEERING
+  APPAREL_TEXTILES_AND_INTERIOR_DESIGN
+  CENTER_ON_AGING
+  FAMILY_STUDIES_AND_HUMAN_SERVICES
+  FOOD_NUTRITION_DIETETICS_AND_HEALTH
+  GERONTOLOGY
+  HOSPITALITY_MANAGEMENT
+  KINESIOLOGY
+  ANATOMY_AND_PHYSIOLOGY
+  CLINICAL_SCIENCES
+  DIAGNOSTIC_MEDICINE_PATHOBIOLOGY
+}
+
+enum UserType {
+  ADVISOR
+  STUDENT
+  UNDEFINED
+}

@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import _ from 'lodash'
 
 class DegreeRequirementGroup extends Component {
-  // TODO: NOTE: THE CHANGE IN DEGREE REQS QUERY MAY LEAD TO LONG RENDERS FOR LONG LISTS OF COURSES
   state = { activeIndex: null }
 
   handleClick = (e, titleProps) => {
@@ -16,6 +15,7 @@ class DegreeRequirementGroup extends Component {
     this.setState({ activeIndex: newIndex })
   }
 
+  // TODO: THIS IS INCORRECT 30 OF 6 HOURS COMPLETE
   isRequirementComplete(requirement) {
     const plannerCourses = _.union(
       this.props.academicUnits.reduce((acc, val) => acc.concat(val.courses), []),
@@ -37,6 +37,11 @@ class DegreeRequirementGroup extends Component {
         return {
           complete: length >= requirement.numberOfX ? requirement.numberOfX : 0,
           xComplete: length
+        }
+      case 'AND':
+        return {
+          complete: false,
+          xComplete: 2
         }
       default:
         return false
@@ -131,10 +136,10 @@ class DegreeRequirementGroup extends Component {
                     <Grid.Column textAlign="right">
                       {requirement.numberOfX > 0 ? (
                         <span>
-                          {isReq.xComplete} of {requirement.numberOfX} {requirement.logicalOperator === 'X_OF' ? 'courses' : 'hours'}{' '}
+                          {isReq.xComplete} of {requirement.numberOfX} {requirement.logicalOperator === 'X_OF' ? 'courses' : 'hours'}
                           selected
                         </span>
-                      ) : null}
+                      ) : <span>Complete all of the courses</span>}
                     </Grid.Column>
                   </Grid>
                 </Link>

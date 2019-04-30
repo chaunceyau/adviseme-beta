@@ -26,6 +26,11 @@ export const GET_COURSE_OPTIONS_FOR_REQUIREMENT = gql`
         credits
         number
         description
+        # TODO: needs to be updated
+        prerequisiteGroups {
+          logicalOperator
+        }
+        # ^ needs to be updated ^ #
         naming {
           id
           shortName
